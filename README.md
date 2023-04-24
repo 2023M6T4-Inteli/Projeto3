@@ -1,7 +1,7 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
-<a href= "https://www.inteli.edu.br/"><img src="https://s3.amazonaws.com/gupy5/production/companies/26702/career/63484/images/2022-04-28_16-56_logo.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width="200"></a>
+<a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width=40% height=40%></a>
 </p>
 
 # IA para Marketing: Monitoramento de campanhas utilizando processamento de linguagem natural (PLN)
@@ -9,22 +9,22 @@
 ## Empresa
 
 <p align="center">
-<a href= "https://www.btgpactual.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg" alt="BTG" border="0" width="200"></a>
+<a href= "https://www.btgpactual.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg" alt="BTG" border="0" width=40% height=40%></a>
 </p>
   
-## Nome do Grupo
+## Grupo 3: BT G3
 
 <p align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/TBD-W.svg" alt="Logo do Grupo" border="0" width="150">
+<img src="https://cdn.discordapp.com/attachments/937463646181785633/1100078873422602350/BTG3_1.png" alt="Logo do Grupo" border="0" width=40% height=40%>
 </p>
 
-## Integrantes
-- <a href="https://www.linkedin.com/in/vthayashi/">Naruto</a>
-- <a href="https://www.linkedin.com/in/vthayashi/">Saitama</a>
-- <a href="https://www.linkedin.com/in/vthayashi/">Goku</a>
-- <a href="https://www.linkedin.com/in/vthayashi/">Charmander</a>
-- <a href="https://www.linkedin.com/in/vthayashi/">Squirtle</a>
-- <a href="https://www.linkedin.com/in/vthayashi/">Bulbasaur</a>
+## 🚀 Integrantes
+- <a href="https://www.linkedin.com/in/daniel-barzilai-061036234/">Daniel Barzilai</a>
+- <a href="https://www.linkedin.com/in/carvalholari">Larissa Gouveia de Carvalho</a>
+- <a href="https://www.linkedin.com/in/maria-lu%C3%ADsa-maia-14384a212/">Maria Luísa Maia</a>
+- <a href="https://www.linkedin.com/in/pedrocrezende/">Pedro de Carvalho Rezende</a>
+- <a href="https://www.linkedin.com/in/rafael-moritz/">Rafael Lupovici Moritz</a>
+- <a href="https://www.linkedin.com/in/vitor-moura-de-oliveira/">Vitor Moura Oliveira</a>
 
 ## 📜 Descrição
 
