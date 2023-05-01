@@ -173,7 +173,7 @@ No bloco de proposta de valor, é necessário definir qual é o produto desenvol
 
 **NOTE**: Abaixo segue o Canvas Proposta de Valor Completo
 
-<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/CVP_completa.png" alt = "canvas completo"><br>
+<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/CPV_completa.png" alt = "canvas completo"><br>
 
 ### **4.4.1 Proposta de valor:**
 A solução que está sendo descrita neste documento é a utilização da inteligência artificial para a área de Marketing do BTG Pactual, que tem como objetivo monitorar as campanhas utilizando PLN. Além disso, também será desenvolvida uma visualização macro dos modelos desenvolvidos a partir de dashboards e gráficos.<br>
@@ -224,12 +224,12 @@ A matriz de risco é dividida em duas partes: Ameaças e Oportunidades. A primei
 
 Essa ferramenta permite que as organizações visualizem e priorizem os riscos de acordo com sua probabilidade e impacto, o que ajuda a tomar decisões mais informadas sobre como gerenciá-los. Por exemplo, riscos com alta probabilidade e alto impacto devem receber mais atenção e esforço de gerenciamento do que aqueles com baixa probabilidade e baixo impacto.
 
-<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_risco.png" alt = "Matriz de risco">
+<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_risco.jpg" alt = "Matriz de risco">
 <br><br>
 
 O grupo definiu como **ameaças**: <br>
 
-<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/ameacas.png" alt = "Ameaças">
+<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/ameacas.jpg" alt = "Ameaças">
 <br><br>
 
 - Baixa experiência em PLN - Probabilidade: 90%; Impacto: Baixo - Apesar do grupo ter pouca experiência, estamos em um ambiente acadêmico e por isso não terá um impacto tão alto;
@@ -252,7 +252,7 @@ O grupo definiu como **ameaças**: <br>
 
 O grupo definiu como **oportunidades**: <br>
 
-<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/oportunidades.png" alt = "Oportunidades">
+<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/oportunidades.jpg" alt = "Oportunidades">
 <br><br>
 
 - O time aprimorar o seu conhecimento em Python - Probabilidade: 90%; Impacto: Muito alto - De acordo com o desenvolvimento do projeto, haverá uma melhoria técnica do grupo, voltada a linguagem Python;

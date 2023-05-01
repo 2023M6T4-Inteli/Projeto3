@@ -10,28 +10,19 @@ A primeira Persona apresentada é o Marcos Santos, analista de Marketing do BTG 
 Por último, o tópico mais difícil é entender quais são os sentimentos que os usuários estão tentando demonstrar por meio dos comentários e mensagens, para assim criar um serviço personalizado. Para resolver as dores, a solução proposta possui uma visualização macro, para ver o andamento e sucesso das campanhas, e uma micro, para entender quais são as necessidades dos clientes naquela campanha. 
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona1.jpg" width = "400px" height="400px">
-<p style="text-align: center;">
-    <sub>Figura 08: Persona 1</sub>
-</p>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona1.jpg"> <br>
 	
 
 A segunda Persona é a Gabriela Ferreira, que trabalha como analista de produtos do BTG Pactual, com o processo atual da empresa, ela acaba sofrendo de algumas dores, como por exemplo a dificuldade de identificar quais produtos os clientes gostariam de obter de forma prática e visual. Além disso, é importante, para os analistas, que os produtos que já estão no mercado, recebam algum tipo de feedback, para assim ser possível de entender quais foram os motivos para o sucesso / falha. Para isso, a solução promove uma ferramenta onde é possível visualizar quais foram os sentimentos das pessoas de acordo com a campanha e, consequentemente, o produto. 
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona2.jpg" width = "400px" height="400px">
-<p style="text-align: center;">
-    <sub>Figura 09: Persona 2</sub>
-</p>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona2.jpg">
 <br>
 
 A terceira e última Persona é o Amir Abdullah, técnico de automação do BTG Pactual, que será responsável pela manutenção e atualização do banco de dados da solução. Para ele, as dores estão mais relacionadas com o banco de dados, ou seja, a falta de métricas, de organização e de tratamento de emojis são as principais dores. Para resolver isso, o modelo tem uma etapa de pré - processamento que irá estruturar, organizar e limpar os dados.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona3.jpg" width = "400px" height="400px">
-<p style="text-align: center;">
-    <sub>Figura 10: Persona 3</sub>
-</p>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona3.jpg">
 <br>
 
 --- 
@@ -55,10 +46,7 @@ No caso abaixo, a jornada está dividida em 5 fases:
 A primeira Jornada do Usuário é sobre o Marcos Santos, que espera que a solução consiga trazer uma melhoria na área de Marketing e que a empresa consiga entender cada dia mais sobre suas campanhas. Ele acredita que, com a solução, a obtenção de dados se torna mais valiosa, sendo capaz de transformar como a empresa trata o Marketing.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada1.jpg" width = "400px" height="400px">
-<p style="text-align: center;">
-    <sub>Figura 11: Jornada de usuário 1</sub>
-</p>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada1.jpg">
 <br>
 
 ### **Jornada 2** - Analista de Produto:
@@ -74,10 +62,7 @@ No caso abaixo, a jornada está dividida nas seguintes fases:
 A segunda Jornada do Usuário é sobre a Gabriela Ferreira, que espera que a solução consiga trazer uma melhoria na área de Product e que junto com a área de Marketing consigam entender cada dia mais sobre as necessidades do cliente. Ela acredita que, com a solução, a obtenção de dados se torna mais valiosa, sendo capaz de transformar como a empresa trata o desenvolvimento de novos produtos ou a melhoria dos já existentes.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada2.jpg" width = "400px" height="400px">
-<p style="text-align: center;">
-    <sub>Figura 12: Jornada de usuário 2</sub>
-</p>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada2.jpg">
 <br>
 
 ### **Jornada 3** - Técnico de Automação:
@@ -93,10 +78,7 @@ No caso abaixo, a jornada está dividida nas seguintes fases:
 A terceira Jornada do Usuário é sobre Amir Abdulah, que espera que a solução consiga trazer uma melhoria na área de Automação, a partir de uma melhor visualização dos dados, e que junto com a área de Marketing consigam entender cada dia mais sobre as necessidades do cliente. Ele acredita que, com a solução, a obtenção de dados se torna mais valiosa, sendo capaz de transformar como a empresa trata o direcionamento e acompanhamento desses mesmos dados.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada3.jpg" width = "400px" height="400px">
-<p style="text-align: center;">
-    <sub>Figura 13: Jornada de usuário 3 </sub>
-</p>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada3.jpg">
 <br>
 
 --- 
