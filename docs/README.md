@@ -6,11 +6,11 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 
 ## (Sprint 1) Entendimento do Negócio
 
-- Arquivo `README.md` referente à entrega: [Entendimento do Negócio](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/Sprint_1/entendimento_negocio.md).
+- Arquivo `README.md` referente à entrega: [Entendimento do Negócio](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/entendimento_negocio.md).
 
 ## (Sprint 1) Entendimento da Experiência do Usuário
 
-- Arquivo `README.md` referente à entrega: [Entendimento da Experiência do Usuário](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/Sprint_1/entendimento_ux.md).
+- Arquivo `README.md` referente à entrega: [Entendimento da Experiência do Usuário](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/entendimento_ux.md).
 
 ## (Sprint 2) Modelo de Bag of Words (IPYNB)
 
