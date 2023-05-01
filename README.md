@@ -12,7 +12,7 @@
 <a href= "https://www.btgpactual.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg" alt="BTG" border="0" width=40% height=40%></a>
 </p>
   
-## Grupo 3: BT G3
+## Grupo 3: BT-G3
 
 <p align="center">
 <img src="https://cdn.discordapp.com/attachments/937463646181785633/1100078873422602350/BTG3_1.png" alt="Logo do Grupo" border="0" width=40% height=40%>
@@ -28,71 +28,61 @@
 
 ## 📜 Descrição
 
-Descrição curta sobre o que seu projeto faz.
+O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as necessidades e demandas dos clientes de maneira fácil e rápida nas redes sociais. A solução proposta para esse problema foi o desenvolvimento de uma Inteligência Artificial utilizando processamento de linguagem natural (PLN), capaz de monitorar as campanhas de marketing, voltadas para o Instagram. O objetivo principal dessa solução é rastrear os dados em tempo real, analisar e interpretar as mensagens e comentários enviados pelos clientes na rede social, a fim de identificar as necessidades e demandas de forma precisa e eficiente.
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+## 📁 Estrutura de pastas
 
-## 📹 Demonstração do Projeto
+|--> assets<br>
+  &emsp;| --> imagens <br>
+|--> documentos<br>
+  &emsp;| --> apresentação <br>
+  &emsp;| --> outros <br>
+|--> src<br>
+  &emsp;|--> Código Fonte<br>
+  &emsp;|--> Notebook<br>
+  &emsp;|--> readme.md<br>
+| readme.md<br>
 
-Coloque aqui os links de vídeos de demonstração do seu projeto.
+Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
-## 🛠 Estrutura de pastas
+- <b>assets</b>: aqui estão os arquivos relacionados a parte gráfica do projeto, ou seja, as imagens e vídeos que os representam (O logo do grupo pode ser adicionado nesta pasta).
 
--Raiz<br>
-|-->apresentacoes<br>
-|-->docs<br>
-  &emsp;|-->antigos<br>
-|-->videos<br>
-|-->src<br>
-|readme.md<br>
+- <b>documentos</b>: aqui estão todos os documentos do projeto, incluindo o manual de instruções (se aplicável). Há também uma pasta denominada <b>outros</b> onde estão presentes outros documentos complementares.
 
-A pasta raiz contem dois arquivos que devem ser alterados:
+- <b>src</b>: Todo o código fonte criado para o desenvolvimento do projeto, incluindo os notebooks, backend e frontend se aplicáveis.
 
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
+- <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
-Há também 4 pastas que seguem da seguinte forma:
+## 🔧 Instalação
 
-<b>apresentacoes</b>: Aqui estarão todas as apresentações do projeto.
+Acrescentar as informações necessárias para instalação do projeto, assim como as versões utilizadas (uso do projeto).
 
-<b>docs</b>: Aqui estarão todos os documentos do projeto. Há uma pasta <b>antigos</b> onde estarão todas as versões antigas da documentação.
 
-<b>src</b>: Nesta pasta irá um README com todos os links dos vídeos de demonstração do projeto.
+## 💻 Configuração de Desenvolvimento
 
-<b>src</b>: Nesta pasta irá todo o código fonte do projeto, pronto para para ser baixado e modificado.
+Acrescentar as informações necessárias para configuração de desenvolvimento do projeto (modificação do projeto).
 
-## 🛠 Instalação
-
-Insira aqui as instruções para instalação (uso) do projeto.
-
-## 💻 Configuração para Desenvolvimento
-
-Insira aqui as instruções para desenvolvimento (modificação) do projeto.
 
 ## 🗃 Histórico de lançamentos
 
-A cada atualização os detalhes devem ser lançados aqui (segue exemplo abaixo).
-
-* 0.2.1 - 25/01/2022
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
-* 0.2.0 - 15/01/2022
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+* 0.5.0 - XX/XX/2023
+    * Quinta entrega
+* 0.4.0 - XX/XX/2023
+    * Quarta entrega
+* 0.3.0 - XX/XX/2023
+    * Terceira entrega
+* 0.2.0 - XX/XX/2023
+    * Segunda entrega 
+* 0.1.0 - 28/04/2023
+    * Primeira entrega : Entendimento do Negócio e UX
 
 ## 📋 Licença/License
 
-Licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/2023M6T4-Inteli">IA para Marketing</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/InteliProjects">Inteli</a>, <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/2023M6T4-Inteli/Projeto3">BT-G3</a>: <a href="https://www.linkedin.com/in/daniel-barzilai-061036234/">Daniel Barzilai</a>, <a href="https://www.linkedin.com/in/carvalholari/">Larissa Carvalho</a>, <a href="https://www.linkedin.com/in/maria-lu%C3%ADsa-maia-14384a212/">Maria Luísa Maia</a>, <a href="https://www.linkedin.com/in/pedrocrezende/">Pedro Rezende</a>, <a href="https://www.linkedin.com/in/rafael-moritz/">Rafael Moritz</a>, <a href="https://www.linkedin.com/in/vitor-moura-de-oliveira/">Vitor Moura</a>,
+is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
 ## 🎓 Referências
 
-Aqui estão as referências usadas no projeto (exemplos abaixo).
-
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://creativecommons.org/share-your-work/>
+1. 
+2. 
+3. 
