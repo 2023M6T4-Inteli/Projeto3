@@ -1,14 +1,16 @@
-# Documento Principal do Projeto
+# 1. Documento Principal do Projeto
 
-Descrição sucinta do projeto, com descrição do problema, do objetivo e da solução em linhas gerais.
+O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as necessidades e demandas dos clientes de maneira fácil e rápida no Instagram. A solução proposta para esse problema foi o desenvolvimento de uma Inteligência Artificial utilizando processamento de linguagem natural (PLN), capaz de monitorar as campanhas de marketing. O objetivo principal dessa solução é rastrear os dados em tempo real, analisar e interpretar as mensagens e comentários enviados pelos clientes na rede social, a fim de identificar as necessidades e demandas de forma precisa e eficiente. A solução é implementada através de algoritmos de aprendizado de máquina, que são treinados para identificar palavras-chave, ou termos, e sentimentos nas mensagens e comentários enviados pelos clientes, de acordo com a campanha presente no post. Com essa solução, a equipe BT-G3 pretende mostrar ao banco formas de tomar decisões de negócios corretas e refinar as estratégias novas ou já existentes, à medida que avança a criação de novas campanhas.
+
+### Caso deseje ler as descrições do problema, objetivo e da solução de forma mais específica, acesse o [Descrições]()
 
 ## (Sprint 1) Entendimento do Negócio
 
-Preencher conforme a descrição do artefato na Adalove.
+- Arquivo `README.md` referente à entrega: [Entendimento do Negócio]().
 
 ## (Sprint 1) Entendimento da Experiência do Usuário
 
-Preencher conforme a descrição do artefato na Adalove.
+- Arquivo `README.md` referente à entrega: [Entendimento da Experiência do Usuário]().
 
 ## (Sprint 2) Modelo de Bag of Words (IPYNB)
 
