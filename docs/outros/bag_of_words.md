@@ -217,9 +217,38 @@ print(preprocessed_comment)
 output: ['faz', 'projet', 'pro', 'btg']
 ```
 Com isso, é possível notar que a função remove a palavra “Estamos” na frase e que o algoritmo não removeu a palavra “pro”, o que significa que abreviações de palavras e gírias podem prejudicar a acurácia do algoritmo.
+A imagem abaixo exemplifica todos os processos descritos acima e conta com exemplos de inputs e outputs.
+
+COLOCAR IMAGEM - PIPELINE
 
 ### 6.3.3 Modelo Bag of words
-TEXTO AQUI 
+
+COLOCAR IMAGEM - PIPELINE
+
+Após o corpus  dos textos terem passado pelo pipeline, chega o momento de analisar as repetições de acordo com cada comentário feito, por meio da técnica Bag of Words (BoW) utilizada em processamento de linguagem natural (PLN). Essa técnica é utilizada para representar um texto como um conjunto de palavras desordenadas, ignorando a ordem e a estrutura gramatical das frases.  Nesse modelo, cada palavra única do texto é transformada em uma "feature" (característica), e a frequência de cada palavra no texto é usada como um valor numérico para a feature correspondente.
+<br>
+Por exemplo, a frase "O gato preto pulou o muro" seria representada como um conjunto de palavras desordenadas: `'o', 'gato', 'preto', 'pulou', 'o', 'muro'`. A frequência de cada palavra é contada, e o resultado é um vetor numérico que representa a frequência de cada palavra na frase. O modelo Bag of Words é uma técnica simples e eficiente para representar textos em formato vetorial, o que permite utilizá-los em algoritmos de aprendizado de máquina. 
+<br>
+Assim, abaixo é possível visualizar o código necessário para realizar essa vetorização e o output dele:
+```
+def bow(comentarios): 
+    vectorizer = CountVectorizer(analyzer=lambda x: x)
+    bow_model = vectorizer.fit_transform(comentarios)
+    bow_df = pd.DataFrame(bow_model.toarray(), columns=vectorizer.get_feature_names_out())
+    return bow_df
+```
+COLOCAR IMAGEM - OUTPUT
+
+Abaixo é demonstrado um exemplo resultante desta tabela, a qual possui um total de 12.193 linhas, que estão de acordo com cada comentário do csv disponibilizado pelo cliente, além de 24.331 colunas, que foram as palavras chaves selecionadas.
+```
+df['conf'].value_counts() 
+0    11795
+1      396
+2        2
+Name: conf, dtype: int64
+```
+Neste exemplo, é possível perceber que o termo ‘conf’  se repete uma vez, em 396 comentários diferentes, e se repete duas vezes em 2 comentários diferentes. Dessa forma, percebe-se como a função consegue selecionar palavras chaves que estão contidas nas diversas frases do dataframe.
+
 
 
 ## 6.4 Conclusão
@@ -229,4 +258,33 @@ Esta análise descritiva dos gráficos proporciona uma compreensão mais profund
 ### 6.4.2 Pré - processamento
 O pré-processamento dos dados é fundamental para garantir a qualidade e a confiabilidade das análises posteriores, contribuindo para um melhor entendimento dos dados e para a obtenção de resultados mais precisos e significativos.
 ### 6.4.3 Modelo Bag of words
-TEXTO AQUI 
+Com a aplicação do Modelo Bag of Words (BoW) é possível perceber a capacidade de seleção de palavras para a futura implementação na Machine Learning desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
+
+COLOCAR IMAGEM - PIPELINE
+
+Porém, foi possível analisar que é necessário uma renovação no tratamento dos dados e exclusão de determinadas palavras, já que foi percebido que havia uma alta diversidade de termos que estão exclusos e/ou outros que permanecerão nas frases e não deveriam permanecer. Abaixo há exemplo desta análise:
+
+```
+word_counts = df.sum()
+top_words = word_counts.sort_values(ascending=False)
+top_10 = top_words.head(10)
+top_10
+
+btgpactual    6489
+invest        4014
+btg           2822
+tod           1783
+banc          1771
+sobr          1364
+melhor        1363
+cont          1332
+merc          1305
+financeir     1303
+dtype: int64
+```
+
+Além disso, foi feita uma plotagem de uma nuvem de palavras para ser mais intuitiva a visualização dos termos que serão necessários passar por um tratamento.
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/nuvem_palavras.png"> <br>
+
+Assim, o próximo passo é um retratamento dos textos para ter melhor desenvolvimento e aplicação no momento de construção da Inteligência Artificial.
