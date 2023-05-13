@@ -134,7 +134,7 @@ Esse tratamento facilita o trabalho de chamar os textos das colunas de uma manei
 <br>
 O segundo tratamento realizado utilizou a função data.describe(), e com isso foi possível identificar que a coluna “processado” não agrega valor, uma vez que todos os seus valores são iguais a zero. Portanto, essa coluna foi removida da base de dados. Abaixo é possível ver o output desta função. 
 
-COLOCAR IMAGEM
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/data_describe.jpg"> <br>
 
 Com isso, foi possível descartar essa coluna utilizando a função data.drop(). Vale ressaltar que as colunas “id” e “dataPublicada” também foram removidas da base de dados, uma vez que não possuem tanta relevância para uma análise de sentimento que tem como principal embasamento os textos, como mostra o código abaixo.
 ```
