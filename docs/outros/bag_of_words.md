@@ -87,7 +87,7 @@ Na terceira linha, a variável count_interactions usa o método plot com o parâ
 <br>
 Na quarta linha é definido um título para o gráfico, com o texto "Tipos de Interação". E a seguir, na quarta linha, o rótulo do eixo y é removido, por ser um gráfico de pizza e as porcentagens já estão sendo mostradas. Por último, o gráfico abaixo é exibido na saída.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/interação.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/interacao.png"> <br>
 
 O gráfico acima demonstra que, caso a hipótese de ter repost dos posts do BTG esteja certa, o dataframe está, em sua maioria com esses casos, o que torna preocupante, já que a ideia é que o projeto analise comentários dos posts. Além disso, pode-se observar uma diferença significativa entre “comentários” e “resposta”. 
 
