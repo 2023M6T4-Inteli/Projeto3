@@ -219,11 +219,11 @@ output: ['faz', 'projet', 'pro', 'btg']
 Com isso, é possível notar que a função remove a palavra “Estamos” na frase e que o algoritmo não removeu a palavra “pro”, o que significa que abreviações de palavras e gírias podem prejudicar a acurácia do algoritmo.
 A imagem abaixo exemplifica todos os processos descritos acima e conta com exemplos de inputs e outputs.
 
-COLOCAR IMAGEM - PIPELINE
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/pipeline.jpg"> <br>
 
 ### 6.3.3 Modelo Bag of words
 
-COLOCAR IMAGEM - PIPELINE
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg"> <br>
 
 Após o corpus  dos textos terem passado pelo pipeline, chega o momento de analisar as repetições de acordo com cada comentário feito, por meio da técnica Bag of Words (BoW) utilizada em processamento de linguagem natural (PLN). Essa técnica é utilizada para representar um texto como um conjunto de palavras desordenadas, ignorando a ordem e a estrutura gramatical das frases.  Nesse modelo, cada palavra única do texto é transformada em uma "feature" (característica), e a frequência de cada palavra no texto é usada como um valor numérico para a feature correspondente.
 <br>
@@ -237,7 +237,7 @@ def bow(comentarios):
     bow_df = pd.DataFrame(bow_model.toarray(), columns=vectorizer.get_feature_names_out())
     return bow_df
 ```
-COLOCAR IMAGEM - OUTPUT
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/output.jpg"> <br>
 
 Abaixo é demonstrado um exemplo resultante desta tabela, a qual possui um total de 12.193 linhas, que estão de acordo com cada comentário do csv disponibilizado pelo cliente, além de 24.331 colunas, que foram as palavras chaves selecionadas.
 ```
@@ -260,7 +260,7 @@ O pré-processamento dos dados é fundamental para garantir a qualidade e a conf
 ### 6.4.3 Modelo Bag of words
 Com a aplicação do Modelo Bag of Words (BoW) é possível perceber a capacidade de seleção de palavras para a futura implementação na Machine Learning desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
 
-COLOCAR IMAGEM - PIPELINE
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg"> <br>
 
 Porém, foi possível analisar que é necessário uma renovação no tratamento dos dados e exclusão de determinadas palavras, já que foi percebido que havia uma alta diversidade de termos que estão exclusos e/ou outros que permanecerão nas frases e não deveriam permanecer. Abaixo há exemplo desta análise:
 
