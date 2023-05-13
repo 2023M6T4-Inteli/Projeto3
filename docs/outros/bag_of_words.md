@@ -225,8 +225,8 @@ TEXTO AQUI
 ## 6.4 Conclusão
 
 ### 6.4.1 Análise descritiva
-TEXTO AQUI 
+Esta análise descritiva dos gráficos proporciona uma compreensão mais profunda dos dados, permitindo identificar insights e tomar decisões. É importante ressaltar que as conclusões obtidas são interpretadas considerando o contexto específico dos dados e as questões de pesquisa em análise.
 ### 6.4.2 Pré - processamento
-TEXTO AQUI 
+O pré-processamento dos dados é fundamental para garantir a qualidade e a confiabilidade das análises posteriores, contribuindo para um melhor entendimento dos dados e para a obtenção de resultados mais precisos e significativos.
 ### 6.4.3 Modelo Bag of words
 TEXTO AQUI 
