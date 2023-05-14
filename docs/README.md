@@ -14,11 +14,11 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 
 ## (Sprint 2) Modelo de Bag of Words (IPYNB)
 
-- Arquivo `README.md` referente à entrega: [Criação do Modelo Bag of Words](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/bag_of_words.md).
+- Arquivo `NOTEBOOK.ipynb` referente à entrega: [Modelo Bag of Words](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/bag_of_words.md).
 
 ## (Sprint 2) Documentação do Modelo de Bag of Words
 
-Preencher conforme a descrição do artefato na Adalove.
+- Arquivo `README.md` referente à entrega: [Documentação do Modelo Bag of Words](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/src/Notebook/BT_G3_Projeto_Modulo6_V01.ipynb).
 
 ## (Sprint 3) Modelo utilizando Word2Vec (IPYNB)
 
