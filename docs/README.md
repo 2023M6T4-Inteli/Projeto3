@@ -6,6 +6,8 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 
 ### Para fins acadêmicos, a seguir é possível acessar o [Histórico de Revisões](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/historico_revisao.md)
 
+### Para fins acadêmicos, a seguir é possível acessar o [Relatório do Colab](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/relatorio_colab.md)
+
 ## (Sprint 1) Entendimento do Negócio
 
 - Arquivo `README.md` referente à entrega: [Entendimento do Negócio](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/docs/outros/entendimento_negocio.md).
