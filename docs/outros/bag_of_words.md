@@ -143,7 +143,8 @@ TEXTO AQUI
 **O segundo gráfico gerado é o de barras**:
 <br>
 &emsp;&emsp; A primeira linha do gráfico de barra define qual será o tamanho da figura que será gerada no final do código. A seguir, a variável count_sentimentos é plotada utilizando o método plot com o parâmetro kind='bar', indicando o tipo de gráfico, essa linha que diferencia os tipos de gráficos. As próximas 3 linhas são usadas para definir os rótulos dos eixo x e y e o título do gráfico. A última linha exibe o gráfico a seguir na saída. 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_barra.png"> <br>
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_coluna.png"> <br>
 &emsp;&emsp; Analisando os gráficos é possível observar que a quantidade de comentários neutros é maior que os outros dois, pode-se interpretar que essa métrica é ruim para os dados, e com isso podemos chegar em duas hipóteses: 1. 43% dos comentários não causam nenhum tipo de sentimento para as pessoas; ou 2. A classificação feita está equivocada, caso os posts causem algum tipo de sentimento. Além disso, a quantidade de comentários positivos é quase o dobro do negativo, o que se pode referir que os usuários estão se sentindo contentes com os serviços prestados. 
 
 ### 6.3.2 Pré - processamento
