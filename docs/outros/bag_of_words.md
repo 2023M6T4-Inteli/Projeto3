@@ -3,7 +3,7 @@
 ## 6.1 Introdução
 
 ### 6.1.1 Análise descritiva
-&emsp;&emsp; A análise descritiva é uma técnica estatística que pode ser aplicada em diferentes áreas, incluindo a análise de sentimentos. No contexto do projeto proposto pelo BTG de análise de sentimentos realizado a partir de comentários de usuários em publicações no Instagram do banco, a análise descritiva é utilizada para descrever e resumir as principais características dos dados coletados. <br>
+&emsp;&emsp; A análise descritiva é uma técnica estatística que pode ser aplicada em diferentes áreas, incluindo a análise de sentimentos. No contexto do projeto proposto pelo BTG de análise de sentimentos realizado a partir de comentários de usuários em publicações no _Instagram_ do banco, a análise descritiva é utilizada para descrever e resumir as principais características dos dados coletados. <br>
 &emsp;&emsp; Por meio desta, é possível obter informações sobre: 
 - O número total de comentários coletados; </br>
 - A distribuição de sentimentos positivos, negativos e neutros expressos pelos usuários; </br>
@@ -19,35 +19,36 @@
 - Remoção de stopwords; </br>
 - Stemming; </br>
 
-&emsp;&emsp; Além disso, foi realizado um tratamento dos dados e a definição de uma função pipeline.
+&emsp;&emsp; Além disso, foi realizado um tratamento dos dados e a definição de uma função _pipeline_.
  
 ### 6.1.3 Modelo Bag of words
-&emsp;&emsp; O modelo Bag of Words é uma das várias ferramentas de vetorização de frases e palavras, processo que é de suma importância para o desenvolvimento de um modelo PLN (Processamento de Linguagem Natural), visto que o modelo de machine learning só pode receber números como inputs. 
+&emsp;&emsp; O modelo _Bag of Words_ é uma das várias ferramentas de vetorização de frases e palavras, processo que é de suma importância para o desenvolvimento de um modelo PLN (Processamento de Linguagem Natural), visto que o modelo de _machine learning_ só pode receber números como _inputs_. 
 
 ## 6.2 Método
 
 ### 6.2.1 Análise descritiva
 &emsp;&emsp; Os comentários realizados pelos usuários nas publicações do banco BTG são uma fonte valiosa de informações para entender como os clientes se sentem em relação aos serviços oferecidos pela instituição financeira. Para realizar a análise desses dados, foram utilizados diversos métodos de tratamento de dados, que serão descritos no tópico 6.2.2 Pré - processamento. </br>
 &emsp;&emsp; Para visualizar as informações de maneira clara e acessível, foram utilizados gráficos de barra e pizza. Os gráficos de barra foram utilizados para a visualização das palavras mais frequentes encontradas nos comentários; identificação dos autores mais ativos e o tipo de sentimento causado (positivo, neutro ou negativo). Já nos gráficos de pizza destacam os tipos de interação mais utilizados, alternando entre comentários, menções e respostas e também tipos de sentimentos expressos pelos usuários. </br>
-&emsp;&emsp; Para realizar a análise e a visualização desses dados, foram utilizadas bibliotecas como: Matplotlib, que é uma biblioteca de visualização de dados em Python, além de bibliotecas notáveis como é o caso do pandas, numpy e a nltk. Com essas ferramentas, foi possível obter insights valiosos sobre a percepção dos clientes em relação ao Banco BTG e identificar áreas que precisam de melhorias.
+&emsp;&emsp; Para realizar a análise e a visualização desses dados, foram utilizadas bibliotecas como: _Matplotlib_, que é uma biblioteca de visualização de dados em _Python_, além de bibliotecas notáveis como é o caso do _pandas_, _numpy_ e a _nltk_. Com essas ferramentas, foi possível obter _insights_ valiosos sobre a percepção dos clientes em relação ao Banco BTG e identificar áreas que precisam de melhorias.
 
 ### 6.2.2 Pré - processamento
 &emsp;&emsp; A etapa de pré - processamento, como dito anteriormente, foi dividida em 6 etapas:
 - **Tratamento de dados**: processo que envolve a manipulação, limpeza, enriquecimento e transformação de dados de forma a torná-los mais úteis e adequados para a análise. Onde foram realizados os processos de: Mudança dos nomes das colunas - retirada das aspas (“”); Retirada de algumas colunas que se mostraram não necessárias para o projeto; Remoção dos comentários do banco (autor: @btgpactual);
-- **Tokenização**: processo de dividir um texto em unidades menores chamadas tokens. Esses tokens podem ser palavras individuais ou partes menores de palavras, como prefixos ou sufixos;
+- **Tokenização**: processo de dividir um texto em unidades menores chamadas _tokens_. Esses _tokens_ podem ser palavras individuais ou partes menores de palavras, como prefixos ou sufixos;
 - **Remoção de pontuações**: processo de retirar os caracteres de pontuação para reduzir o tamanho do vocabulário e evitar ruídos;
 - **Remoção de stopwords**: palavras que podem ser consideradas irrelevantes para o conjunto de resultados a ser exibido;
 - **Stemming**: processo de reduzir palavras ao seu radical, removendo os sufixos e prefixos que modificam o significado da palavra.
 - **Pipeline**: sequência de etapas ou processos interligados que são aplicados aos dados durante o fluxo de trabalho. </br>
-&emsp;&emsp; Para essa etapa foi utilizada a biblioteca do NLTK (tokenização, remoção de pontuação, remoção de stopwords e stemming) e o pandas para a leitura e tratamento dos dados. 
+&emsp;&emsp; Para essa etapa foi utilizada a biblioteca do _NLTK_ (tokenização, remoção de pontuação, remoção de stopwords e _stemming_) e o _pandas_ para a leitura e tratamento dos dados. 
 		
 ### 6.2.3 Modelo Bag of words
-TEXTO AQUI 
+&emsp;&emsp; Como última etapa de manipulação de dados antes do uso do modelo de _Machine Learning_ para a classificação de resultados temos a vetorização dos comentários, processo que nessa _pipeline_ foi conduzido pelo modelo _Bag of Words (BoW)_. O modelo BoW consiste na elaboração de uma matriz a partir de um vocabulário de todos os vocábulos presentes nos textos, enquanto que cada linha será um comentário que se deseja vetorizar. É importante notar que esse modelo é menos robusto, considerando apenas a frequência de palavras em cada frase e não os sentidos semânticos. <br>
+&emsp;&emsp; Para essa etapa, foi utilizada uma instância da classe `CountVectorizer()`, e seus métodos, da biblioteca _sklearn_ (scikit-learn) a fim de que fosse gerado um vocabulário e as respectivas correspondências para cada comentário.
 
 ## 6.3 Resultados
 
 ### 6.3.1 Análise descritiva
-&emsp;&emsp; Na análise descritiva dos dados, foram explorados 2 tipos de gráficos: gráficos de pizza e barras. Utilizando técnicas de visualização, foi possível apresentar informações relevantes e obter insights sobre os dados em questão. Abaixo serão descritos os gráficos e os resultados obtidos. 
+&emsp;&emsp; Na análise descritiva dos dados, foram explorados 2 tipos de gráficos: gráficos de pizza e barras. Utilizando técnicas de visualização, foi possível apresentar informações relevantes e obter _insights_ sobre os dados em questão. Abaixo serão descritos os gráficos e os resultados obtidos. 
 
 ##### 6.3.1.1 Autores
 &emsp;&emsp; A seguir é mostrado o código utilizado para plotar o primeiro gráfico de barras, com o objetivo de demonstrar quais são os usuários (autores) que mais comentam nos posts do BTG Pactual. 
@@ -61,9 +62,9 @@ TEXTO AQUI
     plt.title('Autores que mais comentam')
     plt.show()
 ```
-&emsp;&emsp; Na primeira linha é criada uma nova variável chamada autor_counts. Ela utiliza a coluna "autor" do dataframe data_limpo. A função explode() é aplicada para transformar uma coluna de listas em várias linhas, e em seguida, a função value_counts() é aplicada para contar a ocorrência de comentários daqueles usuários. A segunda linha especifica um tamanho para a figura.
+&emsp;&emsp; Na primeira linha é criada uma nova variável chamada `autor_counts`. Ela utiliza a coluna "autor" do dataframe `data_limpo`. A função `explode()` é aplicada para transformar uma coluna de listas em várias linhas, e em seguida, a função `value_counts()` é aplicada para contar a ocorrência de comentários daqueles usuários. A segunda linha especifica um tamanho para a figura.
 <br>
-&emsp;&emsp; Na terceira linha é utilizado o head(20) para selecionar somente os 20 primeiros valores da variável autor_counts. Em seguida, o método plot é chamado com o parâmetro kind='bar', indicando que um gráfico de barras deve ser criado. 
+&emsp;&emsp; Na terceira linha é utilizado o `head(20)` para selecionar somente os 20 primeiros valores da variável `autor_counts`. Em seguida, o método `plot` é chamado com o parâmetro `kind='bar'`, indicando que um gráfico de barras deve ser criado. 
 <br>
 &emsp;&emsp; Na quarta e quinta linha é criado um rótulo no eixo x e y do gráfico com o texto "Autores" e “Contagem”, respectivamente. Na sexta linha é definido qual é o título do gráfico: “Autores que mais comentam”. Por último, a sétima linha exibe o gráfico abaixo.
 
@@ -84,11 +85,11 @@ TEXTO AQUI
   plt.title('Top 20 Palavras Mais Frequentes')
   plt.show()
 ```
-&emsp;&emsp; O código se inicia criando uma nova variável chamada word_counts. Ela utiliza a coluna "texto_tratado" do dataframe data_limpo. Em seguida, a função explode() é aplicada para transformar uma coluna de listas em várias linhas, onde cada valor da lista é tratado como uma nova observação. Por fim, a função value_counts() é utilizada para contar a ocorrência de cada palavra e gerar a contagem de palavras.
+&emsp;&emsp; O código se inicia criando uma nova variável chamada `word_counts`. Ela utiliza a coluna "texto_tratado" do dataframe `data_limpo`. Em seguida, a `função explode()` é aplicada para transformar uma coluna de listas em várias linhas, onde cada valor da lista é tratado como uma nova observação. Por fim, a função `value_counts()` é utilizada para contar a ocorrência de cada palavra e gerar a contagem de palavras.
 <br>
-&emsp;&emsp; A seguir, a segunda linha cria uma nova figura de plotagem com o tamanho específico, para que se torne melhor a aparência visual. A terceira linha seleciona os primeiros 20 valores da variável word_counts utilizando o método head(20). Além disso, é utilizado o método plot com o parâmetro kind='bar', indicando o tipo do gráfico a ser gerado, nesse caso o de barras.
+&emsp;&emsp; A seguir, a segunda linha cria uma nova figura de plotagem com o tamanho específico, para que se torne melhor a aparência visual. A terceira linha seleciona os primeiros 20 valores da variável `word_counts` utilizando o método `head(20)`. Além disso, é utilizado o método `plot` com o parâmetro `kind='bar'`, indicando o tipo do gráfico a ser gerado, nesse caso o de barras.
 <br>
-&emsp;&emsp; A quarta, quinta e sexta linha são utilizadas para definir as legendas, eixo x e y (quarta e quinta linha) e o título (sexta linha). Por último, o método plt.show() exibe o gráfico abaixo. 
+&emsp;&emsp; A quarta, quinta e sexta linha são utilizadas para definir as legendas, eixo x e y (quarta e quinta linha) e o título (sexta linha). Por último, o método `plt.show()` exibe o gráfico abaixo. 
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/palavras.png"> <br>
 
@@ -106,9 +107,9 @@ TEXTO AQUI
   plt.ylabel('')
   plt.show()
 ```
-&emsp;&emsp; Na primeira linha, é criada uma nova variável chamada count_interactions, que tem como função utilizar a coluna "tipoInteracao" do dataframe data_limpo. E com isso, a função value_counts() é aplicada para contar a ocorrência de cada tipo de interação. A seguir é especificado qual é o tamanho do gráfico.
+&emsp;&emsp; Na primeira linha, é criada uma nova variável chamada `count_interactions`, que tem como função utilizar a coluna "tipoInteracao" do dataframe `data_limpo`. E com isso, a função `value_counts()` é aplicada para contar a ocorrência de cada tipo de interação. A seguir é especificado qual é o tamanho do gráfico.
 <br>
-&emsp;&emsp; Na terceira linha, a variável count_interactions usa o método plot com o parâmetro kind='pie', que indica o tipo de gráfico que deve ser gerado, nesse caso de pizza. Além disso, o parâmetro autopct='%1.1f%%' é utilizado para exibir a porcentagem de cada fatia no gráfico.
+&emsp;&emsp; Na terceira linha, a variável `count_interactions` usa o método `plot` com o parâmetro `kind='pie'`, que indica o tipo de gráfico que deve ser gerado, nesse caso de pizza. Além disso, o parâmetro `autopct='%1.1f%%'` é utilizado para exibir a porcentagem de cada fatia no gráfico.
 <br>
 &emsp;&emsp; Na quarta linha é definido um título para o gráfico, com o texto "Tipos de Interação". E a seguir, na quarta linha, o rótulo do eixo y é removido, por ser um gráfico de pizza e as porcentagens já estão sendo mostradas. Por último, o gráfico abaixo é exibido na saída.
 
@@ -134,15 +135,15 @@ TEXTO AQUI
   plt.title('Tipos de Sentimento')
   plt.show()
 ```
-&emsp;&emsp; A primeira linha é criada uma nova variável chamada count_sentimentos, que utiliza a coluna "sentimento" do dataframe data_limpo. A função value_counts() é aplicada para contar a ocorrência de cada tipo de sentimento. Essa linha pertence aos 2 tipos de gráficos, isso porque ela só está definindo a variável e função que serão utilizadas posteriormente.  
+&emsp;&emsp; A primeira linha é criada uma nova variável chamada `count_sentimentos`, que utiliza a coluna "sentimento" do dataframe `data_limpo`. A função `value_counts()` é aplicada para contar a ocorrência de cada tipo de sentimento. Essa linha pertence aos 2 tipos de gráficos, isso porque ela só está definindo a variável e função que serão utilizadas posteriormente.  
 <br>
 **O primeiro gráfico gerado é o de pizza**:
 <br>
-&emsp;&emsp; A primeira linha específica do gráfico de pizza define qual será o tamanho da figura. A segunda linha chama a variável count_sentimentos, utilizando o método plot com o parâmetro kind='pie', indicando o tipo de gráfico, além disso, o parâmetro autopct='%1.1f%%' é utilizado para exibir a porcentagem de cada fatia no gráfico. A seguir, é definido o título do gráfico e remove o rótulo do eixo y, já que não será utilizado. Por último, o método show exibe o gráfico a seguir na saída.  
+&emsp;&emsp; A primeira linha específica do gráfico de pizza define qual será o tamanho da figura. A segunda linha chama a variável `count_sentimentos`, utilizando o método `plot` com o `parâmetro kind='pie'`, indicando o tipo de gráfico, além disso, o parâmetro `autopct='%1.1f%%'` é utilizado para exibir a porcentagem de cada fatia no gráfico. A seguir, é definido o título do gráfico e remove o rótulo do eixo y, já que não será utilizado. Por último, o método `show` exibe o gráfico a seguir na saída.  
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_pizza.png"> <br>
 **O segundo gráfico gerado é o de barras**:
 <br>
-&emsp;&emsp; A primeira linha do gráfico de barra define qual será o tamanho da figura que será gerada no final do código. A seguir, a variável count_sentimentos é plotada utilizando o método plot com o parâmetro kind='bar', indicando o tipo de gráfico, essa linha que diferencia os tipos de gráficos. As próximas 3 linhas são usadas para definir os rótulos dos eixo x e y e o título do gráfico. A última linha exibe o gráfico a seguir na saída. 
+&emsp;&emsp; A primeira linha do gráfico de barra define qual será o tamanho da figura que será gerada no final do código. A seguir, a variável `count_sentimentos` é plotada utilizando o método `plot` com o parâmetro `kind='bar'`, indicando o tipo de gráfico, essa linha que diferencia os tipos de gráficos. As próximas 3 linhas são usadas para definir os rótulos dos eixo x e y e o título do gráfico. A última linha exibe o gráfico a seguir na saída. 
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_coluna.png"> <br>
 &emsp;&emsp; Analisando os gráficos é possível observar que a quantidade de comentários neutros é maior que os outros dois, pode-se interpretar que essa métrica é ruim para os dados, e com isso podemos chegar em duas hipóteses: 1. 43% dos comentários não causam nenhum tipo de sentimento para as pessoas; ou 2. A classificação feita está equivocada, caso os posts causem algum tipo de sentimento. Além disso, a quantidade de comentários positivos é quase o dobro do negativo, o que se pode referir que os usuários estão se sentindo contentes com os serviços prestados. 
@@ -158,11 +159,11 @@ data = data.rename(columns={'"anomalia"' : 'anomalia', '"dataPublicada"' : 'data
 ```
 &emsp;&emsp; Esse tratamento facilita o trabalho de chamar os textos das colunas de uma maneira mais simples, sem a necessidade de ter que colocar aspas, podendo chamar o texto diretamente.
 <br>
-&emsp;&emsp; O segundo tratamento realizado utilizou a função data.describe(), e com isso foi possível identificar que a coluna “processado” não agrega valor, uma vez que todos os seus valores são iguais a zero. Portanto, essa coluna foi removida da base de dados. Abaixo é possível ver o output desta função. 
+&emsp;&emsp; O segundo tratamento realizado utilizou a função `data.describe()`, e com isso foi possível identificar que a coluna “processado” não agrega valor, uma vez que todos os seus valores são iguais a zero. Portanto, essa coluna foi removida da base de dados. Abaixo é possível ver o output desta função. 
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/data_describe.jpg"> <br>
 
-&emsp;&emsp; Com isso, foi possível descartar essa coluna utilizando a função data.drop(). Vale ressaltar que as colunas “id” e “dataPublicada” também foram removidas da base de dados, uma vez que não possuem tanta relevância para uma análise de sentimento que tem como principal embasamento os textos, como mostra o código abaixo.
+&emsp;&emsp; Com isso, foi possível descartar essa coluna utilizando a função `data.drop()`. Vale ressaltar que as colunas “id” e “dataPublicada” também foram removidas da base de dados, uma vez que não possuem tanta relevância para uma análise de sentimento que tem como principal embasamento os textos, como mostra o código abaixo.
 ```
 data_dropado = data.drop(['processado', 'id', 'dataPublicada'], axis=1)
 data_dropado.head(3)
@@ -185,11 +186,11 @@ def tokenizer(comment):
     else:
         return []
 ```
-&emsp;&emsp; A função acima realiza o processo descrito referenciando a biblioteca nltk.word_tokenize.
+&emsp;&emsp; A função acima realiza o processo descrito referenciando a biblioteca `nltk.word_tokenize`.
 
 ##### 6.3.2.3 Remoção de stopwords
 
-&emsp;&emsp; Já que as palavras que são consideradas como stopwords não tem uma importância para o sentido do texto e elas ocupam a maior parte dos tokens, essa etapa foi realizada por meio do código abaixo:
+&emsp;&emsp; Já que as palavras que são consideradas como _stopwords_ não tem uma importância para o sentido do texto e elas ocupam a maior parte dos tokens, essa etapa foi realizada por meio do código abaixo:
 ```
 def remove_stopwords(tokens):
     if isinstance(tokens, list): 
@@ -202,7 +203,7 @@ def remove_stopwords(tokens):
     else:
         return []
 ```
-&emsp;&emsp; A função acima referencia a biblioteca para que as palavras classificadas sejam removidas do conjunto de tokens. 
+&emsp;&emsp; A função acima referencia a biblioteca para que as palavras classificadas sejam removidas do conjunto de _tokens_. 
 
 ##### 6.3.2.4 Remoção de acentos
 
@@ -221,7 +222,7 @@ def remover_pontuacao(tokens):
 
 &emsp;&emsp; No pipeline foi dividido cada uma das funções em células separadas e depois é executado todas na ordem correta. Essa etapa permite que as funções sejam executadas na ordem correta, garantindo a consistência e a precisão dos resultados, e caso a ordem precise mudar, é mais simples fazer a alteração, essa organização torna o processo mais simples de entender e escalável.
 <br>
-&emsp;&emsp; Na parte de definição de funções, foi definida as funções que serão usadas no pipeline. As funções em questão são: tokenizer(); remove_stopwords(); remover_pontuacao(); stemming(), por fim, a função pipeline() executa cada uma das funções em ordem. Como as funções já foram apresentadas anteriormente, a seguir será mostrada a função pipeline():
+&emsp;&emsp; Na parte de definição de funções, foi definida as funções que serão usadas no pipeline. As funções em questão são: `tokenizer()`; `remove_stopwords()`; `remover_pontuacao()`; `stemming()`, por fim, a função `pipeline()`que executa cada uma das funções em ordem. Como as funções já foram apresentadas anteriormente, a seguir será mostrada a `função pipeline()`:
 ```
 def pipeline(comment):
       tokens = tokenizer(comment)
@@ -230,7 +231,7 @@ def pipeline(comment):
       stemmed_tokens = stemming(tokens_no_punct)
       return stemmed_tokens
 ```
-&emsp;&emsp; Por fim, foram realizados alguns testes de função para garantir que o fluxo do pipeline estava operando adequadamente, para isso, foi criado um novo dataframe com uma coluna chamada “texto_tratado”, na qual está o resultado de todos os textos após passar pela função pipeline(). 
+&emsp;&emsp; Por fim, foram realizados alguns testes de função para garantir que o fluxo do _pipeline_ estava operando adequadamente, para isso, foi criado um novo _dataframe_ com uma coluna chamada “texto_tratado”, na qual está o resultado de todos os textos após passar pela função `pipeline()`. 
 ```
 data_limpo['texto_tratado'] = data_limpo['texto'].apply(pipeline)
 ```
@@ -251,11 +252,11 @@ output: ['faz', 'projet', 'pro', 'btg']
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg"> <br>
 
-&emsp;&emsp; Após o corpus  dos textos terem passado pelo pipeline, chega o momento de analisar as repetições de acordo com cada comentário feito, por meio da técnica Bag of Words (BoW) utilizada em processamento de linguagem natural (PLN). Essa técnica é utilizada para representar um texto como um conjunto de palavras desordenadas, ignorando a ordem e a estrutura gramatical das frases.  Nesse modelo, cada palavra única do texto é transformada em uma "feature" (característica), e a frequência de cada palavra no texto é usada como um valor numérico para a feature correspondente.
+&emsp;&emsp; Após o corpus  dos textos terem passado pelo _pipeline_, chega o momento de analisar as repetições de acordo com cada comentário feito, por meio da técnica _Bag of Words (BoW)_ utilizada em processamento de linguagem natural (PLN). Essa técnica é utilizada para representar um texto como um conjunto de palavras desordenadas, ignorando a ordem e a estrutura gramatical das frases.  Nesse modelo, cada palavra única do texto é transformada em uma _feature_ (característica), e a frequência de cada palavra no texto é usada como um valor numérico para a _feature_ correspondente.
 <br>
-&emsp;&emsp; Por exemplo, a frase "O gato preto pulou o muro" seria representada como um conjunto de palavras desordenadas: `'o', 'gato', 'preto', 'pulou', 'o', 'muro'`. A frequência de cada palavra é contada, e o resultado é um vetor numérico que representa a frequência de cada palavra na frase. O modelo Bag of Words é uma técnica simples e eficiente para representar textos em formato vetorial, o que permite utilizá-los em algoritmos de aprendizado de máquina. 
+&emsp;&emsp; Por exemplo, a frase "O gato preto pulou o muro" seria representada como um conjunto de palavras desordenadas: `'o', 'gato', 'preto', 'pulou', 'o', 'muro'`. A frequência de cada palavra é contada, e o resultado é um vetor numérico que representa a frequência de cada palavra na frase. O modelo _Bag of Words_ é uma técnica simples e eficiente para representar textos em formato vetorial, o que permite utilizá-los em algoritmos de aprendizado de máquina. 
 <br>
-&emsp;&emsp; Assim, abaixo é possível visualizar o código necessário para realizar essa vetorização e o output dele:
+&emsp;&emsp; Assim, abaixo é possível visualizar o código necessário para realizar essa vetorização e o _output_ dele:
 ```
 def bow(comentarios): 
     vectorizer = CountVectorizer(analyzer=lambda x: x)
@@ -273,16 +274,16 @@ df['conf'].value_counts()
 2        2
 Name: conf, dtype: int64
 ```
-&emsp;&emsp; Neste exemplo, é possível perceber que o termo ‘conf’  se repete uma vez, em 396 comentários diferentes, e se repete duas vezes em 2 comentários diferentes. Dessa forma, percebe-se como a função consegue selecionar palavras chaves que estão contidas nas diversas frases do dataframe.
+&emsp;&emsp; Neste exemplo, é possível perceber que o termo `‘conf’`  se repete uma vez, em 396 comentários diferentes, e se repete duas vezes em 2 comentários diferentes. Dessa forma, percebe-se como a função consegue selecionar palavras chaves que estão contidas nas diversas frases do dataframe.
 
 ## 6.4 Conclusão
 
 ### 6.4.1 Análise descritiva
-&emsp;&emsp; Esta análise descritiva dos gráficos proporciona uma compreensão mais profunda dos dados, permitindo identificar insights e tomar decisões. É importante ressaltar que as conclusões obtidas são interpretadas considerando o contexto específico dos dados e as questões de pesquisa em análise.
+&emsp;&emsp; Esta análise descritiva dos gráficos proporciona uma compreensão mais profunda dos dados, permitindo identificar _insights_ e tomar decisões. É importante ressaltar que as conclusões obtidas são interpretadas considerando o contexto específico dos dados e as questões de pesquisa em análise.
 ### 6.4.2 Pré - processamento
 &emsp;&emsp; O pré-processamento dos dados é fundamental para garantir a qualidade e a confiabilidade das análises posteriores, contribuindo para um melhor entendimento dos dados e para a obtenção de resultados mais precisos e significativos.
 ### 6.4.3 Modelo Bag of words
-&emsp;&emsp; Com a aplicação do Modelo Bag of Words (BoW) é possível perceber a capacidade de seleção de palavras para a futura implementação na Machine Learning desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
+&emsp;&emsp; Com a aplicação do Modelo _Bag of Words (BoW)_ é possível perceber a capacidade de seleção de palavras para a futura implementação na _Machine Learning_ desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg"> <br>
 
@@ -307,7 +308,7 @@ financeir     1303
 dtype: int64
 ```
 
-&emsp;&emsp; Além disso, foi feita uma plotagem de uma nuvem de palavras para ser mais intuitiva a visualização dos termos que serão necessários passar por um tratamento.
+&emsp;&emsp; Além disso, foi feita uma _plotagem_ de uma nuvem de palavras para ser mais intuitiva a visualização dos termos que serão necessários passar por um tratamento.
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/nuvem_palavras.png"> <br>
 
