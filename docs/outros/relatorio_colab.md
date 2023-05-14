@@ -1,0 +1,33 @@
+- Projeto Grupo BTG-G3 - **Pedro e Vitor**
+- Sobre os dados -  **Pedro e Vitor**
+- Instalação / Setup - **Rafa** (adicionamos algumas linhas se fosse necessário)
+- Tratamento dos dados - **Todos** (feito em conjunto)
+- Testes isolados - **Todos** (feito em conjunto)
+    - Tokenização
+    - Remoção stopwords
+    - Remoção de alfanumériocs
+    - Stemming
+- Definição de funções
+    - Tokenização - **Vitor**
+    - Remoção stopwords - **Vitor**
+    - Remoção de alfanumériocs - **Malu**
+    - Stemming - **Vitor**
+- Testes das funções - **Daniel, Malu, Rafa e Lari**
+    - Tokenização
+    - Remoção stopwords
+    - Remoção de alfanumériocs
+    - Stemming
+- Processamento / Demonstração - **Daniel, Malu, Rafa e Lari**
+- Pipeline
+    - Definição de função - **Pedro e Lari**
+    - Testes da função - **Todos** (feito em conjunto)
+- Bag of words - Exemplo no inicio: **Daniel, Malu, Rafa e Lari**
+    - Definição de função - **Pedro e Vitor**
+    - Testes da função - **Pedro e Vitor**
+- Plotagem dos gráficos
+    - Autores - **Daniel, Malu, Rafa e Lari**
+    - Palavras - **Daniel, Malu, Rafa e Lari**
+    - Tipo de interação - **Daniel, Malu, Rafa e Lari**
+    - Classificação de sentimento - **Daniel, Malu, Rafa e Lari**
+
+- Revisão final e textos explicativos: **Pedro e Vitor**
