@@ -4,6 +4,6 @@ Nesta pasta ficam os códigos fontes do projeto. A pasta `src` é a pasta raiz d
 
 ## Estrutura de pastas
 
-- Código fonte: Onde iremos colocar os códigos fontes do projeto e passar por algumas explicações de como funciona o código.
-
 - Notebook: Onde iremos colocar os notebooks do projeto, os quais terão toda uma explicação e um passo a passo, desde a exploratória dos dados, até os resultados dos modelos.
+    - Pedro Rezende: Notebooks do Pedro Rezende.
+    - Maria Luiza: Notebooks da Malu.
