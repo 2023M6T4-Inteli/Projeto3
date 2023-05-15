@@ -1,6 +1,6 @@
 - Projeto Grupo BTG-G3 - **Pedro e Vitor**
 - Sobre os dados -  **Pedro e Vitor**
-- Instalação / Setup - **Rafa** (adicionamos algumas linhas se fosse necessário)
+- Instalação / Setup - **Rafa** (adicionamos algumas linhas quando necessário)
 - Tratamento dos dados - **Todos** (feito em conjunto)
 - Testes isolados - **Todos** (feito em conjunto)
     - Tokenização
@@ -9,9 +9,9 @@
     - Stemming
 - Definição de funções
     - Tokenização - **Vitor**
-    - Remoção stopwords - **Vitor**
+    - Remoção stopwords - **Vitor e Pedro**
     - Remoção de alfanumériocs - **Malu**
-    - Stemming - **Vitor**
+    - Stemming - **Vitor e Pedro**
 - Testes das funções - **Daniel, Malu, Rafa e Lari**
     - Tokenização
     - Remoção stopwords
