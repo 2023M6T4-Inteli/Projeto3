@@ -46,7 +46,7 @@
 &emsp;&emsp; A primeira Jornada do Usuário é sobre o Marcos Santos, que espera que a solução consiga trazer uma melhoria na área de Marketing e que a empresa consiga entender cada dia mais sobre suas campanhas. Ele acredita que, com a solução, a obtenção de dados se torna mais valiosa, sendo capaz de transformar a maneira como o Marketing atua dentro da empresa.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada1.jpg">
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada_usuario_1.jpg">
 <br>
 
 ### **Jornada 2** - Analista de Produto:
@@ -62,7 +62,7 @@
 &emsp;&emsp; A segunda Jornada do Usuário é sobre a Gabriela Ferreira, que espera que a solução consiga trazer uma melhoria na área de Produtos e que junto com a área de Marketing consigam entender cada dia mais sobre as necessidades do cliente. Ela acredita que, com a solução, a obtenção de dados se torna mais valiosa, sendo capaz de transformar como a empresa trata o desenvolvimento de novos produtos ou a melhoria daqueles que já existem.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada2.jpg">
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada_usuario_2.jpg">
 <br>
 
 ### **Jornada 3** - Técnico de Automação:
@@ -78,7 +78,7 @@
 &emsp;&emsp; A terceira Jornada do Usuário é sobre Amir Abdulah, que espera que a solução consiga trazer uma melhoria na área de Automação, a partir de uma melhor visualização dos dados, e que junto com a área de Marketing consigam entender cada dia mais sobre as necessidades do cliente. Ele acredita que, com a solução, a obtenção de dados das campanhas de Marketing pode mudar o direcionamento/acompanhamento da empresa.
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada3.jpg">
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada_usuario_3.jpg">
 <br>
 
 --- 
