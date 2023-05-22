@@ -4,21 +4,17 @@
 <a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width=40% height=40%></a>
 </p>
 
+<br>
+
 # IA para Marketing: Monitoramento de campanhas utilizando processamento de linguagem natural (PLN)
 
-## Empresa
-
-<p align="center">
-<a href= "https://www.btgpactual.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Btg-logo-blue.svg" alt="BTG" border="0" width=40% height=40%></a>
-</p>
-  
 ## Grupo 3: BT-G3
 
 <p align="center">
 <img src="https://cdn.discordapp.com/attachments/937463646181785633/1100078873422602350/BTG3_1.png" alt="Logo do Grupo" border="0" width=40% height=40%>
 </p>
 
-## 🚀 Integrantes
+### 🚀 Integrantes
 - <a href="https://www.linkedin.com/in/daniel-barzilai-061036234/">Daniel Barzilai</a>
 - <a href="https://www.linkedin.com/in/carvalholari">Larissa Gouveia de Carvalho</a>
 - <a href="https://www.linkedin.com/in/maria-lu%C3%ADsa-maia-14384a212/">Maria Luísa Maia</a>
@@ -37,6 +33,9 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 |--> documentos<br>
   &emsp;| --> apresentação <br>
   &emsp;| --> outros <br>
+  &emsp;|--> readme.md<br>
+  &emsp;| T4_G5_V2_PLN_Document.pdf<br>
+  &emsp;| T4_G5_V2_PLN_Document.docx<br>
 |--> src<br>
   &emsp;|--> Código Fonte<br>
   &emsp;|--> Notebook<br>
@@ -72,7 +71,7 @@ Acrescentar as informações necessárias para configuração de desenvolvimento
 * 0.3.0 - XX/XX/2023
     * Terceira entrega
 * 0.2.0 - XX/XX/2023
-    * Segunda entrega 
+    * Segunda entrega : Desenvolvimento do primeiro Notebook e Exploratória dos Dados
 * 0.1.0 - 28/04/2023
     * Primeira entrega : Entendimento do Negócio e UX
 
