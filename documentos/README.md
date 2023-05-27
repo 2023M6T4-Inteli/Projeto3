@@ -10,6 +10,8 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 
 ### A seguir é possível acessar o [Índice de Figuras](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/indice_figuras.md)
 
+### A seguir é possível acessar o [Índice de Tabelas](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/indice_tabela.md)
+
 ## (Sprint 1) Entendimento do Negócio
 
 - Arquivo `README.md` referente à entrega: [Entendimento do Negócio](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/entendimento_negocio.md).
