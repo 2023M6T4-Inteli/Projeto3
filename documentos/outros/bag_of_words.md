@@ -73,7 +73,9 @@
 <br>
 &emsp;&emsp; Na quarta e quinta linha é criado um rótulo no eixo x e y do gráfico com o texto "Autores" e “Contagem”, respectivamente. Na sexta linha é definido qual é o título do gráfico: “Autores que mais comentam”. Por último, a sétima linha exibe o gráfico abaixo.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/autores.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/autores.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 20: Gráfico “Autores que mais comentam”
+<br>
 
 &emsp;&emsp; Com esse gráfico foi possível observar que, na maioria das vezes, tem um padrão muito claro de frequência de comentários, o que significa que a empresa mantém um público específico que também é muito engajado. Apesar disso, foi criada a hipótese de que, pelo fato do primeiro usuário (@amgcapitalinvest) ser uma empresa credenciada pelo BTG, ela marca o banco nos seus posts, referenciando os créditos, é possível interpretar que talvez não sejam somente comentários. 
 <br>
@@ -96,7 +98,9 @@
 <br>
 &emsp;&emsp; A quarta, quinta e sexta linha são utilizadas para definir as legendas, eixo x e y (quarta e quinta linha) e o título (sexta linha). Por último, o método `plt.show()` exibe o gráfico abaixo. 
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/palavras.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/palavras.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 21: Gráfico “Top 20 palavras mais frequentes”
+<br>
 
 &emsp;&emsp; Com esse gráfico é possível observar que entre as 20 palavras, 7 delas estão diretamente relacionadas ao banco: “btgpactual”, “invest”, “btg”, “banc”, “merc”, “financeir”, “pactual”. Isso pode significar que geralmente as pessoas estão respondendo o post com os assuntos neles descritos, que, na maioria das vezes, tem como tema o mercado financeiro. Além disso, foi criada uma hipótese que a palavra “btgpactual” se diz respeito à marcação da conta do banco e não necessariamente falando sobre ele, já que as palavras: “btg” e “pactual” estão entre as 20 palavras mais frequentes. 
 <br>
@@ -118,7 +122,9 @@
 <br>
 &emsp;&emsp; Na quarta linha é definido um título para o gráfico, com o texto "Tipos de Interação". E a seguir, na quarta linha, o rótulo do eixo y é removido, por ser um gráfico de pizza e as porcentagens já estão sendo mostradas. Por último, o gráfico abaixo é exibido na saída.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/interacao.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/interacao.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 22: Gráfico “Tipos de interação”
+<br>
 
 &emsp;&emsp; O gráfico acima demonstra que, caso a hipótese de ter repost dos posts do BTG esteja certa, o dataframe está, em sua maioria com esses casos, o que torna preocupante, já que a ideia é que o projeto analise comentários dos posts. Além disso, pode-se observar uma diferença significativa entre “comentários” e “resposta”. 
 
@@ -145,12 +151,16 @@
 **O primeiro gráfico gerado é o de pizza**:
 <br>
 &emsp;&emsp; A primeira linha específica do gráfico de pizza define qual será o tamanho da figura. A segunda linha chama a variável `count_sentimentos`, utilizando o método `plot` com o `parâmetro kind='pie'`, indicando o tipo de gráfico, além disso, o parâmetro `autopct='%1.1f%%'` é utilizado para exibir a porcentagem de cada fatia no gráfico. A seguir, é definido o título do gráfico e remove o rótulo do eixo y, já que não será utilizado. Por último, o método `show` exibe o gráfico a seguir na saída.  
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_pizza.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_pizza.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 23: Gráfico “Tipos de sentimento” - Pizza
+<br>
 **O segundo gráfico gerado é o de barras**:
 <br>
 &emsp;&emsp; A primeira linha do gráfico de barra define qual será o tamanho da figura que será gerada no final do código. A seguir, a variável `count_sentimentos` é plotada utilizando o método `plot` com o parâmetro `kind='bar'`, indicando o tipo de gráfico, essa linha que diferencia os tipos de gráficos. As próximas 3 linhas são usadas para definir os rótulos dos eixo x e y e o título do gráfico. A última linha exibe o gráfico a seguir na saída. 
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_coluna.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_coluna.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 24: Gráfico “Tipos de sentimento” - Barras
+<br>
 &emsp;&emsp; Analisando os gráficos é possível observar que a quantidade de comentários neutros é maior que os outros dois, pode-se interpretar que essa métrica é ruim para os dados, e com isso podemos chegar em duas hipóteses: 1. 43% dos comentários não causam nenhum tipo de sentimento para as pessoas; ou 2. A classificação feita está equivocada, caso os posts causem algum tipo de sentimento. Além disso, a quantidade de comentários positivos é quase o dobro do negativo, o que se pode referir que os usuários estão se sentindo contentes com os serviços prestados. 
 
 ### 6.3.2 Pré - processamento
@@ -166,7 +176,9 @@ data = data.rename(columns={'"anomalia"' : 'anomalia', '"dataPublicada"' : 'data
 <br>
 &emsp;&emsp; O segundo tratamento realizado utilizou a função `data.describe()`, e com isso foi possível identificar que a coluna “processado” não agrega valor, uma vez que todos os seus valores são iguais a zero. Portanto, essa coluna foi removida da base de dados. Abaixo é possível ver o output desta função. 
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/data_describe.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/data_describe.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 25: Output da função data.describe()
+<br>
 
 &emsp;&emsp; Com isso, foi possível descartar essa coluna utilizando a função `data.drop()`. Vale ressaltar que as colunas “id” e “dataPublicada” também foram removidas da base de dados, uma vez que não possuem tanta relevância para uma análise de sentimento que tem como principal embasamento os textos, como mostra o código abaixo.
 ```
@@ -327,11 +339,15 @@ data_limpo[‘pós_tratamento’] = data_limpo['texto'].apply(pipeline)
 ```
 &emsp;&emsp; A imagem abaixo exemplifica todos os processos descritos acima e conta com exemplos de inputs e outputs.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/pipeline.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/pipeline.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 26: Demonstração do pipeline
+<br>
 
 ### 6.3.3 Modelo Bag of words
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 27: Demonstração do Bag of Words
+<br>
 
 &emsp;&emsp; Após o corpus  dos textos terem passado pelo _pipeline_, chega o momento de analisar as repetições de acordo com cada comentário feito, por meio da técnica _Bag of Words (BoW)_ utilizada em processamento de linguagem natural (PLN). Essa técnica é utilizada para representar um texto como um conjunto de palavras desordenadas, ignorando a ordem e a estrutura gramatical das frases.  Nesse modelo, cada palavra única do texto é transformada em uma _feature_ (característica), e a frequência de cada palavra no texto é usada como um valor numérico para a _feature_ correspondente.
 <br>
@@ -345,7 +361,9 @@ def bow(comentarios):
     bow_df = pd.DataFrame(bow_model.toarray(), columns=vectorizer.get_feature_names_out())
     return bow_df
 ```
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/output.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/output.jpg"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 28: Output do código
+<br>
 
 &emsp;&emsp; Abaixo é demonstrado um exemplo resultante desta tabela, a qual possui um total de 12.193 linhas, que estão de acordo com cada comentário do csv disponibilizado pelo cliente, além de 24.331 colunas, que foram as palavras chaves selecionadas.
 ```
@@ -366,7 +384,9 @@ Name: conf, dtype: int64
 ### 6.4.3 Modelo Bag of words
 &emsp;&emsp; Com a aplicação do Modelo _Bag of Words (BoW)_ é possível perceber a capacidade de seleção de palavras para a futura implementação na _Machine Learning_ desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 29: Demonstração do modelo pronto
+<br>
 
 &emsp;&emsp; Porém, foi possível analisar que é necessário uma renovação no tratamento dos dados e exclusão de determinadas palavras, já que foi percebido que havia uma alta diversidade de termos que estão exclusos e/ou outros que permanecerão nas frases e não deveriam permanecer. Abaixo há exemplo desta análise:
 
@@ -391,6 +411,8 @@ dtype: int64
 
 &emsp;&emsp; Além disso, foi feita uma _plotagem_ de uma nuvem de palavras para ser mais intuitiva a visualização dos termos que serão necessários passar por um tratamento.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/nuvem_palavras.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/nuvem_palavras.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 30: Nuvem de palavras
+<br>
 
 &emsp;&emsp; Assim, o próximo passo é um retratamento dos textos para ter melhor desenvolvimento e aplicação no momento de construção da Inteligência Artificial.
