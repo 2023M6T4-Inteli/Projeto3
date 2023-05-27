@@ -19,5 +19,16 @@ Figura 16: Persona 3 <br>
 Figura 17: Jornada de usuário 1 <br>
 Figura 18: Jornada de usuário 2 <br>
 Figura 19: Jornada de usuário 3 <br>
+Figura 20: Gráfico “Autores que mais comentam” <br>
+Figura 21: Gráfico “Top 20 palavras mais frequentes” <br>
+Figura 22: Gráfico “Tipos de interação” <br>
+Figura 23: Gráfico “Tipos de sentimento” - Pizza <br>
+Figura 24: Gráfico “Tipos de sentimento” - Barras <br>
+Figura 25: Output da função data.describe() <br>
+Figura 26: Demonstração do pipeline <br>
+Figura 27: Demonstração do Bag of Words <br>
+Figura 28: Output do código <br>
+Figura 29: Demonstração do modelo pronto <br>
+Figura 30: Nuvem de palavras <br>
 
 
