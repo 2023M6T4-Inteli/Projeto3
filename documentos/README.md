@@ -30,7 +30,9 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 
 ## (Sprint 3) Modelo utilizando Word2Vec (IPYNB)
 
-- Arquivo `README.md` referente à entrega: [Modelo utilizando Word2Vec](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/src/Notebook/Word2Vec_BT_G3_Projeto_Modulo6_V01.ipynb).
+- Arquivo `NOTEBOOK.ipynb` referente à entrega: [Pré-processamento atualizado](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/src/Notebook/3.0_Pre_processamento_BT_G3_Projeto_Modulo6.ipynb).
+- Arquivo `NOTEBOOK.ipynb` referente à entrega: [Modelo utilizando Bag of Words Atualizado](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/src/Notebook/3.0_BagOfWords_BT_G3_Projeto_Modulo6.ipynb).
+- Arquivo `NOTEBOOK.ipynb` referente à entrega: [Modelo utilizando Word2Vec](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/src/Notebook/3.1_Word2Vec_BT_G3_Projeto_Modulo6.ipynb).
 
 ## (Sprint 3) Documentação do Modelo utilizando Word2Vec
 - Arquivo `README.md` referente à entrega: [Documentação do Modelo utilizando Word2Vec](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/Word2Vec.md).
