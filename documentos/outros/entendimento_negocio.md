@@ -162,6 +162,8 @@
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Figura 07: Tabela de receita
 <br><br>
 
+<img src= "https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/financeiro4.png" alt = "financeiro4">
+
 &emsp;&emsp;Dado o valor estimado de R$1.250,00 por cliente e que a cada mês há um aumento de dois clientes, em 1 ano (12 meses), a receita para uma empresa que desenvolve esse tipo de solução seria em média R$166.250,00.<br>
 
 &emsp;&emsp;Considerando que a empresa mantenha o número de clientes como 20 no 13º e 14º mês, e tenha 22 clientes no 15º mês e 16º mês, o total seria uma receita de R$105.000,00 em 4 meses.<br>
