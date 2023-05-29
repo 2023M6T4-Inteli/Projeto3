@@ -10,10 +10,6 @@
 
 ## Grupo 3: BT-G3
 
-<p align="center">
-<img src="https://cdn.discordapp.com/attachments/937463646181785633/1100078873422602350/BTG3_1.png" alt="Logo do Grupo" border="0" width=40% height=40%>
-</p>
-
 ### 🚀 Integrantes
 - <a href="https://www.linkedin.com/in/daniel-barzilai-061036234/">Daniel Barzilai</a>
 - <a href="https://www.linkedin.com/in/carvalholari">Larissa Gouveia de Carvalho</a>
@@ -68,12 +64,12 @@ Acrescentar as informações necessárias para configuração de desenvolvimento
     * Quinta entrega
 * 0.4.0 - XX/XX/2023
     * Quarta entrega
-* 0.3.0 - XX/XX/2023
-    * Terceira entrega
-* 0.2.0 - XX/XX/2023
-    * Segunda entrega : Desenvolvimento do primeiro Notebook e Exploratória dos Dados
+* 0.3.0 - 26/05/2023
+    * Terceira entrega: Refinamento da última entrega, Modelo Word2Vec e aplicação em algoritmo Naive Bayes.
+* 0.2.0 - 12/05/2023
+    * Segunda entrega : Exploratória dos dados, Pré-Processamento e Modelo Bag Of Words.
 * 0.1.0 - 28/04/2023
-    * Primeira entrega : Entendimento do Negócio e UX
+    * Primeira entrega : Entendimento do Negócio e UX.
 
 ## 📋 Licença/License
 
