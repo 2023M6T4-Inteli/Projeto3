@@ -10,19 +10,23 @@
 &emsp;&emsp; Por último, o tópico mais difícil é entender quais são os sentimentos que os usuários estão tentando demonstrar por meio dos comentários e mensagens, para assim criar um serviço personalizado. Para resolver as dores, a solução proposta possui uma visualização macro, para ver o andamento e sucesso das campanhas, e uma micro, para entender quais são as necessidades dos clientes naquela campanha. 
 <br>
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona1.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona1.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 14: Persona 1
+<br>
 	
 
 &emsp;&emsp; A segunda Persona é a Gabriela Ferreira, que trabalha como analista de produtos do BTG Pactual, com o processo atual da empresa, ela acaba sofrendo de algumas dores, como por exemplo a dificuldade de identificar quais produtos os clientes gostariam de obter de forma prática e visual. Além disso, é importante, para os analistas, que os produtos que já estão no mercado, recebam algum tipo de feedback, para assim ser possível de entender quais foram os motivos para o sucesso / falha. Para isso, a solução promove uma ferramenta onde é possível visualizar quais foram os sentimentos das pessoas de acordo com a campanha e, consequentemente, o produto. 
 <br>
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona2.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 15: Persona 2
 <br>
 
 &emsp;&emsp; A terceira e última Persona é o Amir Abdullah, técnico de automação do BTG Pactual, que será responsável pela manutenção e atualização do banco de dados da solução. Para ele, as dores estão mais relacionadas com o banco de dados, ou seja, a falta de métricas, de organização e de tratamento de emojis são as principais dores. Para resolver isso, o modelo tem uma etapa de pré - processamento que irá estruturar, organizar e limpar os dados.
 <br>
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/Persona3.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 16: Persona 3
 <br>
 
 --- 
@@ -47,6 +51,7 @@
 <br>
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada_usuario_1.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 17: Jornada do Usuário 1
 <br>
 
 ### **Jornada 2** - Analista de Produto:
@@ -63,6 +68,7 @@
 <br>
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada_usuario_2.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 18: Jornada do Usuário 2
 <br>
 
 ### **Jornada 3** - Técnico de Automação:
@@ -79,6 +85,7 @@
 <br>
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/jornada_usuario_3.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 19: Jornada do Usuário 3
 <br>
 
 --- 
@@ -100,6 +107,8 @@ para alcançar um objetivo específico em relação a um produto ou sistema. Ela
 | **Critérios de aceitação** 	|1.  É necessário o entendimento dos dados . <br><br> 2.  É necessário a limpeza dos dados. <br><br> 3. É necessário a Análise dos dados <br><br> 4. É necessário a organização e estruturação dos dados|
 | **Testes de aceitação** 	| - **Critério 1**: <br> Todas as colunas foram processadas:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, analisar origem do erro e resolvê-lo.<br><br>-  Todas as linhas foram processadas: <br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, analisar origem do erro e resolvê-lo.<br><br>- **Critério 2**: <br> O código executa todas as técnicas de pré processamento sem erros:<br>    - Aceitou:  Correto, começar o próximo critério.<br>    - Recusou: Errado, revisar o código. <br><br> O código executa uma (ou mais) técnica (s)  de pré processamento com erros: <br> - Aceitou:  Errado, revisar o código.<br>    - Recusou: Correto, começar o próximo critério. <br><br>- **Critério 3**: <br> Todos os elementos gráficos para a análise foram executados com sucesso (elementos gráficos: infográficos; tabelas; gráficos):<br>    - Aceitou:  Correto, começar o próximo critério.<br>    - Recusou: Errado, revisar o código. <br><br> A Persona conseguiu tirar insights dos dados: <br> - Aceitou:  Correto, começar o próximo critério.<br>    - Recusou: Errado, revisar o código ou analisar novamente. <br><br>- **Critério 4**: <br> Os dados foram estruturados e transformados em valores numéricos apenas<br>    - Aceitou:  Correto, começar a próxima user story;<br>    - Recusou: Errado,  revisar se o processo de tokenização foi realizado. <br>|
 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Tabela 01: User Story 01
+
 <br>
 
 
@@ -114,6 +123,7 @@ para alcançar um objetivo específico em relação a um produto ou sistema. Ela
 | **Critérios de aceitação** 	|1.  Separação dos dados em teste e treino. <br><br> 2.  Exposição dos resultados.|
 | **Testes de aceitação** 	| - **Critério 1**: <br> Os dados foram separados em amostra de treino e teste entre os intervalos 80/20 e 70/30:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, revisar os intervalos descritos no código.<br><br>- **Critério 2**: <br>  O modelo foi treinado apenas com os tokens de treino<br>    - Aceitou:  Correto, começar o próximo critério.<br>    - Recusou: Errado, o .fit deve ser realizado apenas nos tokens de treino. <br><br> O modelo foi treinado incluindo os tokens de treino:<br>    - Aceitou: Errado, revisar o código.<br>    - Recusou:  Correto, avançar para a user story 3.	|
 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Tabela 02: User Story 02
 <br>
 
 
@@ -128,6 +138,7 @@ para alcançar um objetivo específico em relação a um produto ou sistema. Ela
 | **Critérios de aceitação** 	|1.  Análise de métricas. <br><br> 2.  Escolha do melhor modelo. <br><br> 3.  O modelo deve ter os hiperparâmetros ajustados.|
 | **Testes de aceitação** 	| - **Critério 1**: <br> O conjunto de teste foi usado para determinar sua precisão e desempenho geral:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, revisar o código.<br><br> -  O conjunto de teste não foi usado para determinar sua precisão e desempenho geral: <br>    - Aceitou: Errado, revisar o código.<br>    - Recusou:  Correto, começar o próximo critério. <br><br> - **Critério 2**: <br> O modelo foi escolhido conforme o melhor desempenho em loss e acurácia:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, revisar a escolha do modelo e época.<br><br> - **Critério 3**: <br> Diferentes hiperparâmetros foram testados para a escolha do conjunto ideal:<br>    - Aceitou:  Correto, avançar para a user story 4.<br>    - Recusou:  Errado, revisar o código.	|
 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Tabela 03: User Story 03
 <br>
 
 
@@ -142,6 +153,8 @@ para alcançar um objetivo específico em relação a um produto ou sistema. Ela
 | **Critérios de aceitação** 	|1.  Desenvolvimento da interface. <br><br> 2.  Ranking de palavras-chaves. <br><br> 3.  Todas as palavras-chaves são relevantes.|
 | **Testes de aceitação** 	| - **Critério 1**: <br> Acesso a interface com os elementos gráficos sem problemas:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, verificar a disponibilidade do site.<br><br>   A interface mostra os gráficos dentro do padrão: <br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, revisar o código ou a conexão com a _Internet_. <br><br> - **Critério 2**: <br> A interface exibe as 5 palavras-chave mais mencionadas pelos comentários das campanhas:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, revisar o código.<br><br> - **Critério 3**: <br> De 5 palavras-chave escolhidas, nenhuma é semântica recorrente de frases em qualquer outro contexto, ou seja, irrelevante:<br>    - Aceitou:  Correto, avançar para a User Story 5.<br>    - Recusou:  Errado, o modelo deve voltar a ser ajustado (User Story 3).	|
 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Tabela 04: User Story 04
+
 <br>
 &emsp;&emsp; Apesar da mesma interface e mesma análise, o analista de marketing e a analista de produtos têm prioridades diferentes de visualização na plataforma por se tratar de dores distintas.
 <br><br>
@@ -153,3 +166,6 @@ para alcançar um objetivo específico em relação a um produto ou sistema. Ela
 | **História** 	| Eu, como analista de marketing, quero poder acessar a interface de forma imediata, para que eu tenha acesso às análises de comportamento e palavras-chave das demandas no Instagram. 	|
 | **Critérios de aceitação** 	|1.  Rastreamento dos sentimentos por campanha. <br><br> 2.  Comparação de sentimentos entre campanhas.|
 | **Testes de aceitação** 	| - **Critério 1**: <br> A interface exibe um escopo macro dos sentimentos dos clientes por campanha:<br>    - Aceitou: Correto, começar o próximo critério.<br>    - Recusou:  Errado, revisar o código.<br><br>- **Critério 2**: <br>  A interface exibe uma comparação entre campanhas para estabelecer o produto mais bem sucedido<br>    - Aceitou:  Correto.<br>    - Recusou: Errado, revisar o código.|
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Tabela 05: User Story 05
+

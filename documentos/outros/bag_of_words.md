@@ -15,9 +15,11 @@
 ### 6.1.2 Pré - processamento
 &emsp;&emsp; O pré-processamento de dados no contexto do PLN refere-se a uma série de etapas de preparação que os dados textuais devem passar antes de serem usados em um modelo de aprendizado de máquina. Essas etapas visam limpar, organizar e estruturar os dados textuais para que sejam mais facilmente compreendidos pelo modelo. Algumas etapas importantes do pré- processamento são: 
 - Tokenização; </br> 
-- Remoção de pontuações; </br> 
+- Tratamento de abreviações; </br> 
+- Tratamento de emoji; </br> 
 - Remoção de stopwords; </br>
-- Stemming; </br>
+- Remoção de alfanuméricos; </br>
+- Lematização; </br> 
 
 &emsp;&emsp; Além disso, foi realizado um tratamento dos dados e a definição de uma função _pipeline_.
  
@@ -35,11 +37,14 @@
 &emsp;&emsp; A etapa de pré - processamento, como dito anteriormente, foi dividida em 6 etapas:
 - **Tratamento de dados**: processo que envolve a manipulação, limpeza, enriquecimento e transformação de dados de forma a torná-los mais úteis e adequados para a análise. Onde foram realizados os processos de: Mudança dos nomes das colunas - retirada das aspas (“”); Retirada de algumas colunas que se mostraram não necessárias para o projeto; Remoção dos comentários do banco (autor: @btgpactual);
 - **Tokenização**: processo de dividir um texto em unidades menores chamadas _tokens_. Esses _tokens_ podem ser palavras individuais ou partes menores de palavras, como prefixos ou sufixos;
+- **Tratamento de abreviações**: processo de transformar palavras abreviadas, muito utilizada em redes sociais, para sua expansão;
 - **Remoção de pontuações**: processo de retirar os caracteres de pontuação para reduzir o tamanho do vocabulário e evitar ruídos;
+- **Tratamento de emoji**: processo de transformar símbolos de emojis para o seu significado; 
 - **Remoção de stopwords**: palavras que podem ser consideradas irrelevantes para o conjunto de resultados a ser exibido;
-- **Stemming**: processo de reduzir palavras ao seu radical, removendo os sufixos e prefixos que modificam o significado da palavra.
+- **Remoção de alfanuméricos**: processo de retirar os caracteres de pontuação para reduzir o tamanho do vocabulário e evitar ruídos;
+- **Lematização**: processo de normalização das palavras, reduzindo a variabilidade e simplificando a análise e compreensão do texto;
 - **Pipeline**: sequência de etapas ou processos interligados que são aplicados aos dados durante o fluxo de trabalho. </br>
-&emsp;&emsp; Para essa etapa foi utilizada a biblioteca do _NLTK_ (tokenização, remoção de pontuação, remoção de stopwords e _stemming_) e o _pandas_ para a leitura e tratamento dos dados. 
+&emsp;&emsp; Para essa etapa foi utilizada a biblioteca do _NLTK_, para a tokenização e remoção de stopwords, a biblioteca _emoji_ para o tratamento do mesmo, o _spacy_, para a lematização e o _pandas_ para a leitura e tratamento dos dados. 
 		
 ### 6.2.3 Modelo Bag of words
 &emsp;&emsp; Como última etapa de manipulação de dados antes do uso do modelo de _Machine Learning_ para a classificação de resultados temos a vetorização dos comentários, processo que nessa _pipeline_ foi conduzido pelo modelo _Bag of Words (BoW)_. O modelo BoW consiste na elaboração de uma matriz a partir de um vocabulário de todos os vocábulos presentes nos textos, enquanto que cada linha será um comentário que se deseja vetorizar. É importante notar que esse modelo é menos robusto, considerando apenas a frequência de palavras em cada frase e não os sentidos semânticos. <br>
@@ -68,7 +73,9 @@
 <br>
 &emsp;&emsp; Na quarta e quinta linha é criado um rótulo no eixo x e y do gráfico com o texto "Autores" e “Contagem”, respectivamente. Na sexta linha é definido qual é o título do gráfico: “Autores que mais comentam”. Por último, a sétima linha exibe o gráfico abaixo.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/autores.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/autores.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 20: Gráfico “Autores que mais comentam”
+<br>
 
 &emsp;&emsp; Com esse gráfico foi possível observar que, na maioria das vezes, tem um padrão muito claro de frequência de comentários, o que significa que a empresa mantém um público específico que também é muito engajado. Apesar disso, foi criada a hipótese de que, pelo fato do primeiro usuário (@amgcapitalinvest) ser uma empresa credenciada pelo BTG, ela marca o banco nos seus posts, referenciando os créditos, é possível interpretar que talvez não sejam somente comentários. 
 <br>
@@ -91,7 +98,9 @@
 <br>
 &emsp;&emsp; A quarta, quinta e sexta linha são utilizadas para definir as legendas, eixo x e y (quarta e quinta linha) e o título (sexta linha). Por último, o método `plt.show()` exibe o gráfico abaixo. 
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/palavras.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/palavras.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 21: Gráfico “Top 20 palavras mais frequentes”
+<br>
 
 &emsp;&emsp; Com esse gráfico é possível observar que entre as 20 palavras, 7 delas estão diretamente relacionadas ao banco: “btgpactual”, “invest”, “btg”, “banc”, “merc”, “financeir”, “pactual”. Isso pode significar que geralmente as pessoas estão respondendo o post com os assuntos neles descritos, que, na maioria das vezes, tem como tema o mercado financeiro. Além disso, foi criada uma hipótese que a palavra “btgpactual” se diz respeito à marcação da conta do banco e não necessariamente falando sobre ele, já que as palavras: “btg” e “pactual” estão entre as 20 palavras mais frequentes. 
 <br>
@@ -113,7 +122,9 @@
 <br>
 &emsp;&emsp; Na quarta linha é definido um título para o gráfico, com o texto "Tipos de Interação". E a seguir, na quarta linha, o rótulo do eixo y é removido, por ser um gráfico de pizza e as porcentagens já estão sendo mostradas. Por último, o gráfico abaixo é exibido na saída.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/interacao.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/interacao.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 22: Gráfico “Tipos de interação”
+<br>
 
 &emsp;&emsp; O gráfico acima demonstra que, caso a hipótese de ter repost dos posts do BTG esteja certa, o dataframe está, em sua maioria com esses casos, o que torna preocupante, já que a ideia é que o projeto analise comentários dos posts. Além disso, pode-se observar uma diferença significativa entre “comentários” e “resposta”. 
 
@@ -140,12 +151,16 @@
 **O primeiro gráfico gerado é o de pizza**:
 <br>
 &emsp;&emsp; A primeira linha específica do gráfico de pizza define qual será o tamanho da figura. A segunda linha chama a variável `count_sentimentos`, utilizando o método `plot` com o `parâmetro kind='pie'`, indicando o tipo de gráfico, além disso, o parâmetro `autopct='%1.1f%%'` é utilizado para exibir a porcentagem de cada fatia no gráfico. A seguir, é definido o título do gráfico e remove o rótulo do eixo y, já que não será utilizado. Por último, o método `show` exibe o gráfico a seguir na saída.  
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_pizza.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_pizza.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 23: Gráfico “Tipos de sentimento” - Pizza
+<br>
 **O segundo gráfico gerado é o de barras**:
 <br>
 &emsp;&emsp; A primeira linha do gráfico de barra define qual será o tamanho da figura que será gerada no final do código. A seguir, a variável `count_sentimentos` é plotada utilizando o método `plot` com o parâmetro `kind='bar'`, indicando o tipo de gráfico, essa linha que diferencia os tipos de gráficos. As próximas 3 linhas são usadas para definir os rótulos dos eixo x e y e o título do gráfico. A última linha exibe o gráfico a seguir na saída. 
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_coluna.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/sentimento_coluna.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 24: Gráfico “Tipos de sentimento” - Barras
+<br>
 &emsp;&emsp; Analisando os gráficos é possível observar que a quantidade de comentários neutros é maior que os outros dois, pode-se interpretar que essa métrica é ruim para os dados, e com isso podemos chegar em duas hipóteses: 1. 43% dos comentários não causam nenhum tipo de sentimento para as pessoas; ou 2. A classificação feita está equivocada, caso os posts causem algum tipo de sentimento. Além disso, a quantidade de comentários positivos é quase o dobro do negativo, o que se pode referir que os usuários estão se sentindo contentes com os serviços prestados. 
 
 ### 6.3.2 Pré - processamento
@@ -161,7 +176,9 @@ data = data.rename(columns={'"anomalia"' : 'anomalia', '"dataPublicada"' : 'data
 <br>
 &emsp;&emsp; O segundo tratamento realizado utilizou a função `data.describe()`, e com isso foi possível identificar que a coluna “processado” não agrega valor, uma vez que todos os seus valores são iguais a zero. Portanto, essa coluna foi removida da base de dados. Abaixo é possível ver o output desta função. 
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/data_describe.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/data_describe.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 25: Output da função data.describe()
+<br>
 
 &emsp;&emsp; Com isso, foi possível descartar essa coluna utilizando a função `data.drop()`. Vale ressaltar que as colunas “id” e “dataPublicada” também foram removidas da base de dados, uma vez que não possuem tanta relevância para uma análise de sentimento que tem como principal embasamento os textos, como mostra o código abaixo.
 ```
@@ -188,69 +205,149 @@ def tokenizer(comment):
 ```
 &emsp;&emsp; A função acima realiza o processo descrito referenciando a biblioteca `nltk.word_tokenize`.
 
-##### 6.3.2.3 Remoção de stopwords
+##### 6.3.2.3 Tratamento de abreviações
+
+&emsp;&emsp;Para tornar mais fácil a análise de sentimento, foi feito um tratamento de abreviações, para que palavras como: “vcs” se torne “vocês”. O código abaixo define um dicionário de gírias e abreviações usado para normalização de texto.
+```
+# Dicionário de gírias e abreviações para normalização
+dicionario_girias = {'vc': 'você', 'vcs':'você', 'Vc': 'você', 'pq': 'porque', 'Pq': 'porque', 'tbm': 'também', 'q': 'que', 'td': 'tudo', 'blz': 'beleza', 'flw': 'falou', 'kd': 'cadê', 'Gnt': 'gente', 'gnt': 'gente', 'to': 'estou', 'mt': 'muito', 'cmg': 'comigo', 'ctz': 'certeza', 'jah': 'já', 'naum': 'não', 'ta': 'está', 'eh': 'é', 'vdd': 'verdade', 'vlw': 'valeu', 'p': 'para', 'sdds': 'saudades', 'qnd': 'quando', 'msm': 'mesmo', 'fzr': 'fazer', 'ss': 'sim', 'Ss': 'sim', 'pdc': 'pode crer', 'nn': 'não', 'Nn': 'não', 'pls': 'please', 'obg': 'obrigado', 'agr': 'agora'}
+```
+&emsp;&emsp; O código abaixo apresenta um conjunto de palavras que são desconsideradas ou excluídas durante o processo. Essas palavras foram consideradas irrelevantes para a análise, já que contém informações específicas.
+
+```
+palavras_desconsideradas = {"warrenbrasil", "bicharaemotta", "sportainment", "sportainmet", "sportainmetâ", "sportainmentâ","roundpushpin",
+"hubstage", "kaletsky", "scandiuzzi", "futofmoney", "ricktolledo", "thaotinhasbfc", "winthegame", "romulofialdini", "disclaimer", "astraoficialbr", "furnasenergia", "alelobrasil", "bancodaycoval", "grupohagana", "robertoljustus", "steinwaybrasil", "joseavillez", "dianaroth", "beachtennis", "alliancejjteam", "fabiogurgel", "blackrocks", "masterjacare", "gigipaivabjj", "clubefiinews", "mouratoglou", "octocapitalbr", "oficinadofraja" "blackintech"}
+```
+
+&emsp;&emsp; A função comentarios_normalizados abaixo tem como objetivo normalizar os comentários representados por tokens, levando em consideração o dicionário de gírias e abreviações e um conjunto de palavras desconsideradas, os dois citados acima. 
+
+```
+def comentarios_normalizados(tokens, dicionario_girias, palavras_desconsideradas):
+  tokens_normalizados = []
+  for sentence in tokens:
+    treated = []
+    for palavra in sentence:
+        if palavra in palavras_desconsideradas:
+            treated.append(palavra)
+        else:
+            if palavra in dicionario_girias:
+                palavra_normalizada = dicionario_girias.get(palavra, palavra)
+                treated.append(palavra_normalizada)
+            else:
+                treated.append(palavra)
+    treated = [palavra.replace(' ', '') if '_' in palavra else palavra for palavra in treated]
+    tokens_normalizados.append(treated)
+  return tokens_normalizados
+```
+
+##### 6.3.2.4 Tratamento de emoji
+
+&emsp;&emsp; A função demojize_tokens recebe uma lista de tokens e tem como objetivo realizar o processo de "demojize", ou seja, remover emojis e substituí-los por sua representação textual.
+```
+def demojize_tokens(tokens):
+  demojized_tokens = []
+  for termo in tokens:
+    demojized = [emoji.demojize(palavra) if emoji.emoji_count(palavra) > 0 else palavra for palavra in termo]
+    demojized = [palavra.replace(":", "").replace("_", "") if any(c in palavra for c in [":", "_"]) else palavra for palavra in demojized]
+    demojized = [palavra.replace("-", "_") if "-" in palavra else palavra for palavra in demojized]
+    demojized_tokens.append(demojized)
+  return demojized_tokens
+```
+
+##### 6.3.2.5 Remoção de stopwords
 
 &emsp;&emsp; Já que as palavras que são consideradas como _stopwords_ não tem uma importância para o sentido do texto e elas ocupam a maior parte dos tokens, essa etapa foi realizada por meio do código abaixo:
 ```
 def remove_stopwords(tokens):
-    if isinstance(tokens, list): 
-        comments_filtered = []
-        for token in tokens:
-          tk = token.lower()
-          if tk not in stopwords:
-              comments_filtered.append(tk)
-        return comments_filtered
-    else:
-        return []
+  stopwords = nltk.corpus.stopwords.words('portuguese')
+  filtered_tokens = []
+  for sentence in tokens:
+      filtered = [palavra for palavra in sentence if palavra not in stopwords]
+      filtered_tokens.append(filtered)
+  return filtered_tokens
 ```
 &emsp;&emsp; A função acima referencia a biblioteca para que as palavras classificadas sejam removidas do conjunto de _tokens_. 
 
-##### 6.3.2.4 Remoção de acentos
+##### 6.3.2.6 Remoção de alfanuméricos
 
 &emsp;&emsp; Da mesma forma que algumas palavras não têm importância para a análise, a pontuação e caracteres especiais também não tem, por isso a função abaixo retira esses caracteres. 
 ```
-def remover_pontuacao(tokens):
-    tokens_sem_pontuacao = []
-    for token in tokens:
-        token_sem_pontuacao = re.sub(r'[^\w\s]', '', token)
-        if token_sem_pontuacao != '':
-            tokens_sem_pontuacao.append(token_sem_pontuacao)
-    return tokens_sem_pontuacao
+def removendo_alfanumericos(tokens):
+  output_tokens = []
+  for sentence in tokens:
+      output_list = []
+      for palavra in sentence:
+          if palavra.strip(): # Verifica se a palavra não é uma string vazia
+              output_list.extend(re.findall(r'\w+', palavra)) # analisar se não é melhor usar o append em vez de extend
+      output_tokens.append(output_list)
+  return output_tokens
 ```
 
-##### 6.3.2.5 Pipeline
+##### 6.3.2.7 Lematização
+
+&emsp;&emsp; A função lematizacao() tem como objetivo realizar a lematização dos tokens, ou seja, converter as palavras para sua forma base ou lemma. O código utiliza o modelo pré-treinado do SpaCy para o idioma português (carregado anteriormente com o spacy.load("pt_core_news_sm")) para realizar a lematização.
+```
+def lematizacao(tokens):
+  # Carregar o modelo pré-treinado do SpaCy para o idioma português
+  nlp = spacy.load("pt_core_news_sm")
+  lemmatized_tokens = []
+  for sentence in tokens:
+    lemma_list = []
+    doc = nlp(" ".join(sentence))  # Unir as palavras da frase em uma única string
+    for token in doc:
+      if token.lemma_ != '-PRON-':
+        if token.pos_ == 'VERB':
+          palavra_lematizada = token.lemma_
+        else:
+          palavra_lematizada = token.lemma_
+        if palavra_lematizada:
+          lemma_list.append(palavra_lematizada)
+    lemmatized_tokens.append(lemma_list)
+  # Converter todas as palavras para minúsculas
+  lemmatized_tokens_lower = []
+  for sentence in lemmatized_tokens:
+    sentence_lower = [palavra.lower() for palavra in sentence]
+    lemmatized_tokens_lower.append(sentence_lower)
+  return lemmatized_tokens_lower
+```
+
+##### 6.3.2.8 Pipeline
 
 &emsp;&emsp; No pipeline foi dividido cada uma das funções em células separadas e depois é executado todas na ordem correta. Essa etapa permite que as funções sejam executadas na ordem correta, garantindo a consistência e a precisão dos resultados, e caso a ordem precise mudar, é mais simples fazer a alteração, essa organização torna o processo mais simples de entender e escalável.
 <br>
-&emsp;&emsp; Na parte de definição de funções, foi definida as funções que serão usadas no pipeline. As funções em questão são: `tokenizer()`; `remove_stopwords()`; `remover_pontuacao()`; `stemming()`, por fim, a função `pipeline()`que executa cada uma das funções em ordem. Como as funções já foram apresentadas anteriormente, a seguir será mostrada a `função pipeline()`:
+&emsp;&emsp; Na parte de definição de funções, foi definida as funções que serão usadas no pipeline. As funções em questão são: tokenizer(); comentarios_normalizados(); demojize_tokens(); remove_stopwords(); removendo_alfanumericos(); lematizacao(), por fim, a função pipeline() executa cada uma das funções em ordem. Como as funções já foram apresentadas anteriormente, a seguir será mostrada a função:
 ```
 def pipeline(comment):
+	# Tokenização
       tokens = tokenizer(comment)
-      tokens_filtered = remove_stopwords(tokens)
-      tokens_no_punct = remover_pontuacao(tokens_filtered)
-      stemmed_tokens = stemming(tokens_no_punct)
-      return stemmed_tokens
-```
-&emsp;&emsp; Por fim, foram realizados alguns testes de função para garantir que o fluxo do _pipeline_ estava operando adequadamente, para isso, foi criado um novo _dataframe_ com uma coluna chamada “texto_tratado”, na qual está o resultado de todos os textos após passar pela função `pipeline()`. 
-```
-data_limpo['texto_tratado'] = data_limpo['texto'].apply(pipeline)
-```
-&emsp;&emsp; Em seguida, a função é executada com a frase "Estamos fazendo um projeto pro BTG!", com a intenção de encontrar potenciais falhas no algoritmo, o código abaixo demonstra esse processo.
-```
-comment = "Estamos fazendo um projeto pro BTG!"
-preprocessed_comment = pipeline(comment)
-print(preprocessed_comment)
+      # Normalização das abreviações
+ 	normalizado = comentarios_normalizados(tokens, dicionario_girias, palavras_desconsideradas)
+      # Tratamento de Emojis
+      demojized = demojize_tokens(normalizado)
+      # Remoção das stopwords
+      no_stopwords = remove_stopwords(tokens)
+      # Remoção dos alfanuméricos
+      no_alfanumericos = removendo_alfanumericos(no_stopwords)
+      # lematização
+      tratados = lematizacao(no_alfanumericos)
+      return tratados
 
-output: ['faz', 'projet', 'pro', 'btg']
 ```
-&emsp;&emsp; Com isso, é possível notar que a função remove a palavra “Estamos” na frase e que o algoritmo não removeu a palavra “pro”, o que significa que abreviações de palavras e gírias podem prejudicar a acurácia do algoritmo. </br>
+&emsp;&emsp; Por fim, foram realizados alguns testes de função para garantir que o fluxo do _pipeline_ estava operando adequadamente, para isso, foi criado um novo _dataframe_ com uma coluna chamada ‘pós_tratamento’, na qual está o resultado de todos os textos após passar pela função `pipeline()`. 
+```
+data_limpo[‘pós_tratamento’] = data_limpo['texto'].apply(pipeline)
+```
 &emsp;&emsp; A imagem abaixo exemplifica todos os processos descritos acima e conta com exemplos de inputs e outputs.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/pipeline.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/pipeline.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 26: Demonstração do pipeline
+<br>
 
 ### 6.3.3 Modelo Bag of words
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 27: Demonstração do Bag of Words
+<br>
 
 &emsp;&emsp; Após o corpus  dos textos terem passado pelo _pipeline_, chega o momento de analisar as repetições de acordo com cada comentário feito, por meio da técnica _Bag of Words (BoW)_ utilizada em processamento de linguagem natural (PLN). Essa técnica é utilizada para representar um texto como um conjunto de palavras desordenadas, ignorando a ordem e a estrutura gramatical das frases.  Nesse modelo, cada palavra única do texto é transformada em uma _feature_ (característica), e a frequência de cada palavra no texto é usada como um valor numérico para a _feature_ correspondente.
 <br>
@@ -264,7 +361,9 @@ def bow(comentarios):
     bow_df = pd.DataFrame(bow_model.toarray(), columns=vectorizer.get_feature_names_out())
     return bow_df
 ```
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/output.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/output.jpg"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 28: Output do código
+<br>
 
 &emsp;&emsp; Abaixo é demonstrado um exemplo resultante desta tabela, a qual possui um total de 12.193 linhas, que estão de acordo com cada comentário do csv disponibilizado pelo cliente, além de 24.331 colunas, que foram as palavras chaves selecionadas.
 ```
@@ -285,7 +384,9 @@ Name: conf, dtype: int64
 ### 6.4.3 Modelo Bag of words
 &emsp;&emsp; Com a aplicação do Modelo _Bag of Words (BoW)_ é possível perceber a capacidade de seleção de palavras para a futura implementação na _Machine Learning_ desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 29: Demonstração do modelo pronto
+<br>
 
 &emsp;&emsp; Porém, foi possível analisar que é necessário uma renovação no tratamento dos dados e exclusão de determinadas palavras, já que foi percebido que havia uma alta diversidade de termos que estão exclusos e/ou outros que permanecerão nas frases e não deveriam permanecer. Abaixo há exemplo desta análise:
 
@@ -310,6 +411,8 @@ dtype: int64
 
 &emsp;&emsp; Além disso, foi feita uma _plotagem_ de uma nuvem de palavras para ser mais intuitiva a visualização dos termos que serão necessários passar por um tratamento.
 
-<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/nuvem_palavras.png"> <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/nuvem_palavras.png"> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 30: Nuvem de palavras
+<br>
 
 &emsp;&emsp; Assim, o próximo passo é um retratamento dos textos para ter melhor desenvolvimento e aplicação no momento de construção da Inteligência Artificial.
