@@ -26,7 +26,9 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 
 ## (Sprint 2) Documentação do Modelo de Bag of Words
 
-- Arquivo `README.md` referente à entrega: [Documentação do Modelo Bag of Words](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/bag_of_words.md).
+- Arquivo `README.md` referente à entrega: [Pré - processamento](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/pre_processamento.md).
+- Arquivo `README.md` referente à entrega: [Análise Descritiva](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/analise_descritiva.md).
+- Arquivo `README.md` referente à entrega: [Vetorização - Bag of Words](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/vetorizacao.md).
 
 ## (Sprint 3) Modelo utilizando Word2Vec (IPYNB)
 
@@ -35,7 +37,10 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
 - Arquivo `NOTEBOOK.ipynb` referente à entrega: [Modelo utilizando Word2Vec](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/src/Notebook/3.1_Word2Vec_BT_G3_Projeto_Modulo6.ipynb).
 
 ## (Sprint 3) Documentação do Modelo utilizando Word2Vec
-- Arquivo `README.md` referente à entrega: [Documentação do Modelo utilizando Word2Vec](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/Word2Vec.md).
+
+- Arquivo `README.md` referente à entrega: [Vetorização - Word2Vec](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/vetorizacao.md).
+- Arquivo `README.md` referente à entrega: [Modelos](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/modelos.md).
+- Arquivo `README.md` referente à entrega: [Comparação entre modelos](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/comparacao_modelo.md).
 
 ## (Sprint 4) Proposta de uma nova modelagem utilizando novas features (IPYNB)
 
