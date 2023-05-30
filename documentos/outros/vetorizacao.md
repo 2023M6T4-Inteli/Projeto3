@@ -1,16 +1,16 @@
 # **8. Vetorização**
 
-## 6.1 Bag of Words
+## 8.1 Bag of Words
 
-### 6.1.1 Introdução
+### 8.1.1 Introdução
 
 &emsp;&emsp; O modelo _Bag of Words_ é uma das várias ferramentas de vetorização de frases e palavras, processo que é de suma importância para o desenvolvimento de um modelo PLN (Processamento de Linguagem Natural), visto que o modelo de _machine learning_ só pode receber números como _inputs_. 
 
-### 6.1.2 Método
+### 8.1.2 Método
 &emsp;&emsp; Como última etapa de manipulação de dados antes do uso do modelo de _Machine Learning_ para a classificação de resultados temos a vetorização dos comentários, processo que nessa _pipeline_ foi conduzido pelo modelo _Bag of Words (BoW)_. O modelo BoW consiste na elaboração de uma matriz a partir de um vocabulário de todos os vocábulos presentes nos textos, enquanto que cada linha será um comentário que se deseja vetorizar. É importante notar que esse modelo é menos robusto, considerando apenas a frequência de palavras em cada frase e não os sentidos semânticos. <br>
 &emsp;&emsp; Para essa etapa, foi utilizada uma instância da classe `CountVectorizer()`, e seus métodos, da biblioteca _sklearn_ (scikit-learn) a fim de que fosse gerado um vocabulário e as respectivas correspondências para cada comentário.
 
-### 6.1.3 Resultados
+### 8.1.3 Resultados
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/bow.jpg">
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 27: Demonstração do Bag of Words
@@ -42,7 +42,7 @@ Name: conf, dtype: int64
 ```
 &emsp;&emsp; Neste exemplo, é possível perceber que o termo `‘conf’`  se repete uma vez, em 396 comentários diferentes, e se repete duas vezes em 2 comentários diferentes. Dessa forma, percebe-se como a função consegue selecionar palavras chaves que estão contidas nas diversas frases do dataframe.
 
-### 6.1.4 Conclusão
+### 8.1.4 Conclusão
 &emsp;&emsp; Com a aplicação do Modelo _Bag of Words (BoW)_ é possível perceber a capacidade de seleção de palavras para a futura implementação na _Machine Learning_ desenvolvida. O objetivo do projeto é demonstrado a partir da imagem abaixo:
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/modelo.jpg">
@@ -79,15 +79,15 @@ dtype: int64
 &emsp;&emsp; Assim, o próximo passo é um retratamento dos textos para ter melhor desenvolvimento e aplicação no momento de construção da Inteligência Artificial.
 
 
-## 6.2 Word2Vec
+## 8.2 Word2Vec
 
-### 6.2.1 Introdução
+### 8.2.1 Introdução
 &emsp;&emsp; O modelo de vetorização Word2Vec, ao contrário do Bag Of Words, permite um entendimento das conexões semânticas das palavras, sendo assim, palavras podem ser analisadas a partir de sua similaridade com outras através da ocorrência contextual. Isso é possível porque o Word2Vec relaciona as palavras a um espaço dimensional, representadas por um vetor denso, onde palavras com similaridade maior tendem a se agrupar no mesmo espaço. O modelo, através do uso de uma rede neural embutida, aprende por treinamento em big corpus, como o wikipédia, a localização ideal para cada palavra.
 
-### 6.2.2 Método
+### 8.2.2 Método
 &emsp;&emsp;No projeto recorremos a 2 métodos de vetorização com o Word2Vec: o modelo pré-treinado de Continuous Bag-of-Words (CBOW) da biblioteca NILC e, posteriormente, o treinado no nosso próprio corpus. O modelo pré-treinado, como dito anteriormente, não necessita de treinamento adicional, pois ele já dominou as relações linguísticas entre as palavras a partir do primeiro treinamento, além disso, o modelo usado é público e permite o uso quase instantâneo no corpus. 
 
-### 6.2.3 Resultados
+### 8.2.3 Resultados
 &emsp;&emsp;Para ambos os métodos, foi necessário realizar a soma dos vetores de palavras presentes nas frases, desse modo, teremos um vetor para cada frase. No método pré-treinado, construímos vetores de 50 dimensões, enquanto que, no modelo treinado no corpus da base de dados de comentários, construímos vetores de 100 dimensões.
 
 <img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/word2vec_pre_treinado.jpg"> 
@@ -98,7 +98,7 @@ dtype: int64
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 32: Word2Vec treinado com o corpus
 <br>
 
-### 6.2.4 Conclusão
+### 8.2.4 Conclusão
 &emsp;&emsp;A conclusão obtida de qual será o melhor método de vetorização se dará na construção dos modelos de machine learning que será explicado na próxima sessão, pois assim poderemos comparar diretamente a acurácia e recall dos diferentes modelos.
 
 
