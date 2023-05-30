@@ -12,5 +12,11 @@
 | 11/05/2023 | Pedro Rezende; Vitor Oliveira | 2.2 | Modelo |
 | 12/05/2023; 13/05/2023 | Maria Luísa Maia | 2.3 | Revisão e formatação no Google Docs |
 | 13/05/2023 | Maria Luísa Maia; Larissa Carvalho | 2.4 | Markdown no Github |
+| 15/05/2023 | Maria Luísa Maia; Larissa Carvalho | 3.0 | Revisão e melhorias de feedbacks sprint 1  |
+| 27/05/2023 | Maria Luísa Maia | 3.1 | Revisão texto geral |
+| 27/05/2023 | Maria Luísa Maia | 3.2 | Pré - processamento - atualização de novos processos |
+| 27/05/2023 | Larissa Carvalho | 3.3 | Comparação entre os modelos |
+| 28/05/2023 | Maria Luísa Maia; Daniel Barzilai; Rafael Moritz | 3.4 | Markdown + revisão |
+
 
 <br>
