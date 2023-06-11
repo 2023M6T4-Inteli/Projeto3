@@ -127,7 +127,17 @@ def remove_stopwords(tokens):
       filtered_tokens.append(filtered)
   return filtered_tokens
 ```
-&emsp;&emsp; A função acima referencia a biblioteca para que as palavras classificadas sejam removidas do conjunto de _tokens_. 
+&emsp;&emsp; A função acima referencia a biblioteca para que as palavras classificadas sejam removidas do conjunto de tokens. No entanto, deve-se notar que o uso isolado da biblioteca não contempla o dialeto comum nos comentários	de internet devido à ausência de abreviaturas e gírias similares ao conjunto de stopwords. Para isso, foi unido à lista de stopwords uma lista de abreviações e uma mais extensa lista de preposições por meio da função abaixo:
+
+```
+def merge_stopwords(arr1, arr2):
+    merged = arr1.copy()  # Cria uma cópia do primeiro array
+    for element in arr2:
+        if element not in merged:
+            merged.append(element)  
+    return merged
+```
+
 
 ##### 7.3.6 Remoção de alfanuméricos
 
@@ -139,7 +149,14 @@ def removendo_alfanumericos(tokens):
       output_list = []
       for palavra in sentence:
           if palavra.strip(): # Verifica se a palavra não é uma string vazia
-              output_list.extend(re.findall(r'\w+', palavra)) # analisar se não é melhor usar o append em vez de extend
+            palavra_sem_marcacao = re.sub((r'@\w*'), '', palavra)
+            palavra_sem_hashtag = re.sub((r'#\w*'), '', palavra_sem_marcacao)
+            palavra_sem_hyperlink = re.sub(r'https\S*', '', palavra_sem_hashtag)
+            palavra_sem_www = re.sub(r'\bwww\.[^\s]*', '', palavra_sem_hyperlink)
+            palavra_sem_numeros = re.sub((r'[0-9]'), '', palavra_sem_www)
+            palavra_sem_btg = re.sub((r'\bbtg\b'), '', palavra_sem_numeros)
+            palavra_sem_btgpactual = re.sub((r'\bpactual\b'), '', palavra_sem_btg)
+            output_list.extend(re.findall(r'\w+', palavra_sem_btgpactual)) # analisar se não é melhor usar o append em vez de extend
       output_tokens.append(output_list)
   return output_tokens
 ```
@@ -192,7 +209,6 @@ def pipeline(comment):
       # lematização
       tratados = lematizacao(no_alfanumericos)
       return tratados
-
 ```
 &emsp;&emsp; Por fim, foram realizados alguns testes de função para garantir que o fluxo do _pipeline_ estava operando adequadamente, para isso, foi criado um novo _dataframe_ com uma coluna chamada ‘pós_tratamento’, na qual está o resultado de todos os textos após passar pela função `pipeline()`. 
 ```
