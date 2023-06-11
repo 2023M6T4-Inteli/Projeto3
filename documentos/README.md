@@ -48,7 +48,7 @@ Colocar o link do artefato (deve estar na pasta src do repositório do projeto).
 
 ## (Sprint 4) Documentação da proposta de uma nova modelagem
 
-Preencher conforme a descrição do artefato na Adalove.
+- Arquivo `README.md` referente à entrega: [Modelos](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/modelos.md).
 
 ## (Sprint 5) Apresentação Final
 
