@@ -706,6 +706,375 @@ with open('nome_escolhido.pkl', 'rb') as arquivo:
 ### 9.6.4 Conclusão
 &emsp;&emsp;Em suma, o Random Forest é um modelo muito promissor que apresentou resultados muito satisfatórios e no final todos os modelos desenvolvidos foram exportados com a biblioteca pickle. 
 
+## 9.7 Rede Neural (Sequência de palavras) - Word2Vec
+
+### 9.7.1 Introdução
+
+&emsp;&emsp; Uma rede neural, também conhecida como rede neural artificial, é um modelo computacional inspirado no funcionamento do cérebro humano. Ela é composta por um conjunto interconectado de unidades de processamento, chamadas de neurônios artificiais ou nós, que trabalham em conjunto para resolver problemas complexos de forma eficiente. Para fins de comparação, foram desenvolvidos códigos que têm a base de dados diferentes. 
+
+### 9.7.2 Método
+
+&emsp;&emsp; O método de sequência de palavras geralmente é utilizado para frases que formam um significado, e a ordem das palavras é crucial para formar o sentido. Então, no caso do projeto, é interessante testar a utilização dessa abordagem.
+
+### 9.7.3 Resultados
+
+&emsp;&emsp; O tópico será dividido da mesma forma que o notebook está dividido para facilitar a compreensão. Além disso, esse modelo foi testado com 3 tipos de bases de dados diferentes (base tratada, word2vec com cbow e word2vec com embedding layer) em dois momentos diferentes (sprint 3 e sprint 4).
+
+#### 9.7.3.1 Leitura da base de dados
+
+&emsp;&emsp; Para a realização com a base tratada, o primeiro processo a ser realizado é a leitura do arquivo csv gerado no notebook do pré processamento, onde o arquivo já está com as etapas realizadas.
+
+```
+rede_neural_df = pd.read_csv("caminho do arquivo")
+```
+
+&emsp;&emsp; Para a realização dos modelos já vetorizados com o Word2Vec, é necessário somente referenciar a variável usada no notebook.
+
+```
+Word2Vec + CBoW: df_vec
+
+Word2Vec + Embedding Layer: df_word2vec
+```
+
+#### 9.7.3.1 Separação de treino e teste
+
+&emsp;&emsp; A primeira linha do código é atribuído os valores das colunas "texto_tratado" e "sentimento" do dataframe desejado às variáveis x e y, respectivamente. Essa fase significa que a primeira coluna, "texto_tratado" ou x, contém o texto dos dados a serem classificados e a segunda coluna, "sentimento" ou y, representa a categoria desses dados.
+
+```
+x, y = rede_neural_df["texto_tratado"], rede_neural_df["sentimento"]
+x, y = df_vec["texto_tratado"], df_vec["sentimento"]
+x, y = df_word2vec["texto_tratado"], df_word2vec["sentimento"]
+			
+obs: somente um desses códigos devem ser utilizados, a depender de qual base será utilizada no desenvolvimento.
+```
+
+&emsp;&emsp; As próximas linhas abaixo têm como objetivo realizar um pré-processamento novamente, feito pela rede neural, que contém: LabelEncoder, remoção de algumas palavras e Tokenização.
+
+```
+labelencoder = LabelEncoder()
+y = labelencoder.fit_transform(y)
+
+words = ["o", "ao", 'aos', 'os', 'a', 'as', 'e', 'um', 'uma','ele', 'ela', 'eles', 'elas', 'do', 'da', 'dos', 'das', 'de', 'no', 'na', 'nos', 'nas', 'pelo', 'pela', 'pelos', 'pelas', 'num', 'numa', 'nuns', 'numas', 'dum', 'duma', 'duns', 'dumas']
+
+x_filter = []
+
+for title in x:
+  for word in words:
+    title = title.replace(word, '')
+  x_filter.append(title)
+
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(x_filter)
+```
+
+&emsp;&emsp; A próxima linha calcula o tamanho do vocabulário, por meio da criação da variável vocab. Além disso, o texto contido na lista x_filter é transformado em uma sequência numérica e logo depois é criado qual será o comprimento máximo dentro da sequência, por meio do max_length. Por último, as sequências de palavras em x_filter são ajustadas para ter o mesmo comprimento máximo através da função pad_sequences de uma biblioteca.
+
+```
+vocab = len(tokenizer.word_docs) + 1
+
+x_filter = tokenizer.texts_to_sequences(x_filter)
+
+max_length = max([len(z) for z in x_filter])
+x_filter = pad_sequences(x_filter, maxlen=max_length, padding='post')
+```
+
+&emsp;&emsp; A última etapa desse tópico é a divisão entre conjuntos de treinamento (x_train e y_train) e teste (x_test e y_test) usando a função train_test_split da biblioteca sklearn.model_selection. Nesse caso foram utilizados 33% dos dados para teste. Além disso, é printado o tamanho dos dados de entrada e saída. 
+
+```
+x_train, x_test, y_train, y_test = train_test_split(x_filter, y, test_size=0.33)
+
+print("Tamanho de x:", len(x_filter))
+print("Tamanho de y:", len(y))
+
+output - sprint 3: 
+Tamanho de x: 9207
+Tamanho de y: 9207
+
+output - sprint 4: 
+Tamanho de x: 8040
+Tamanho de y: 8040
+```
+
+#### 9.7.3.3 Criação do modelo
+
+&emsp;&emsp; A função recall implementada acima calcula a métrica de recall para avaliar o desempenho de um modelo de aprendizado de máquina em um problema de classificação binária. A função recebe dois parâmetros: y_true e y_pred, o primeiro representa as verdadeiras classes dos exemplos do conjunto de dados, enquanto o segundo representa as classes previstas pelo modelo. Em seguida, o número de possible_positives é calculado, isso é feito aplicando a função K.clip novamente para limitar os valores de y_true entre 0 e 1, convertendo-os em valores binários. Por último, o recall é calculado dividindo o número de verdadeiros positivos pelo número de positivos possíveis. 
+
+```
+def recall(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+    return true_positives / (possible_positives + K.epsilon())
+```
+
+&emsp;&emsp; As linhas abaixo definem como o modelo será estruturado, começando com a criação da variável model que define que o modelo será Sequential() , permitindo o empilhamento de camadas sequencialmente. A segunda linha, adiciona uma camada de embedding, que é responsável por transformar os números inteiros que representam as palavras em vetores densos de números reais. A terceira linha adiciona uma camada de pooling global máxima, que extrai o valor máximo de cada recurso da camada anterior e reduz a dimensão dos dados resultantes para um vetor unidimensional.
+
+```
+model = Sequential()
+model.add(Embedding(input_dim=vocab, output_dim=80, input_length=max_length, trainable = True))
+model.add(GlobalMaxPooling1D())
+```
+
+&emsp;&emsp; A próxima linha adiciona uma camada de dropout, que é uma técnica utilizada para prevenir o overfitting. A seguir, é adicionada uma camada densa que possui 3 unidades, correspondendo às 3 classes possíveis de sentimentos. A função de ativação softmax é aplicada para produzir probabilidades de pertencer a cada classe. E, por último, o modelo é compilado e o otimizador adam é usado para ajustar os pesos da rede durante o treinamento. A métrica recall, definida pela função já descrita, é usada para avaliar o desempenho do modelo durante o treinamento.
+
+```
+model.add(Dropout(0.3))
+model.add(Dense(units = 3, activation = 'softmax'))
+model.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = [recall])
+```
+
+&emsp;&emsp; O objeto ModelCheckpoint é responsável por monitorar a acurácia do modelo durante o treinamento e salva apenas os melhores pesos em um arquivo weight.best.hdf5. Por último, o modelo é treinado usando o método fit, os dados de treinamento e de validação são fornecidos. O treinamento é realizado em lotes (batch_size=32) e por um total de 5 épocas. 
+
+```
+mc = ModelCheckpoint('weight.best.hdf5', monitor='val_acc', save_best_only=True, mode='max')
+
+model.fit(x_train, y_train, validation_data = (x_test, y_test), batch_size = 32, epochs = 10, callbacks = [mc])
+```
+
+##### 9.7.3.3.1 Construção da rede neural com a base tratada - Sprint 3
+
+&emsp;&emsp; Abaixo é possível observar o relatório de classificação do modelo com a base tratada da Sprint 3, onde o 0 é negativo, o 1 é neutro e o 2 é positivo. Após isso, é gerada uma matriz de confusão. 
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+              precision    recall  f1-score   support
+
+           0       0.70      0.68      0.69       662
+           1       0.77      0.76      0.77      1358
+           2       0.71      0.73      0.72      1019
+
+    accuracy                           0.73      3039
+   macro avg       0.72      0.72      0.72      3039
+weighted avg       0.73      0.73      0.73      3039
+```
+&emsp;&emsp; **Código da matriz de confusão:** <br>
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+&emsp;&emsp; **Matriz de Confusão** <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_redeNeuralSeq_base_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 46: Matriz de Confusão - base tratada Sprint 3
+<br>
+
+##### 9.7.3.3.2 Construção da rede neural com Word2Vec + CBoW - Sprint 3
+
+&emsp;&emsp; Abaixo é possível observar o relatório de classificação do modelo com o Word2Vec + CBoW da Sprint 3, onde o 0 é negativo, o 1 é neutro e o 2 é positivo. Após isso, é gerada uma matriz de confusão. 
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.70      0.70      0.70       633
+           1       0.79      0.74      0.77      1308
+           2       0.71      0.77      0.74      1098
+
+    accuracy                           0.74      3039
+   macro avg       0.73      0.74      0.73      3039
+weighted avg       0.74      0.74      0.74      3039
+```
+&emsp;&emsp; **Código da matriz de confusão:** <br>
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+&emsp;&emsp; **Matriz de Confusão** <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_redeNeuralSeq_word2vec_cbow_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 47: Matriz de Confusão - Word2Vec + CBoW Sprint 3
+<br>
+
+##### 9.7.3.3.3 Construção da rede neural com Word2Vec + Embedding Layer - Sprint 3
+
+&emsp;&emsp; Abaixo é possível observar o relatório de classificação do modelo com o Word2Vec + Embedding Layer da Sprint 3, onde o 0 é negativo, o 1 é neutro e o 2 é positivo. Após isso, é gerada uma matriz de confusão. 
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.67      0.69      0.68       632
+           1       0.76      0.75      0.76      1321
+           2       0.72      0.72      0.72      1086
+
+    accuracy                           0.73      3039
+   macro avg       0.72      0.72      0.72      3039
+weighted avg       0.73      0.73      0.73      3039
+```
+&emsp;&emsp; **Código da matriz de confusão:** <br>
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+&emsp;&emsp; **Matriz de Confusão** <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_redeNeuralSeq_word_embedding_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 48: Matriz de Confusão - Word2Vec + Embedding Layer Sprint 3
+<br>
+
+##### 9.7.3.3.4 Construção da rede neural com a base tratada - Sprint 4
+
+&emsp;&emsp; Abaixo é possível observar o relatório de classificação do modelo com a base tratada da Sprint 4, onde o 0 é negativo, o 1 é neutro e o 2 é positivo. Após isso, é gerada uma matriz de confusão. 
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.67      0.66      0.67       624
+           1       0.72      0.64      0.68       990
+           2       0.69      0.78      0.73      1040
+
+    accuracy                           0.70      2654
+   macro avg       0.70      0.69      0.69      2654
+weighted avg       0.70      0.70      0.70      2654
+```
+&emsp;&emsp; **Código da matriz de confusão:** <br>
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+&emsp;&emsp; **Matriz de Confusão** <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_redeNeuralSeq_base_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 49: Matriz de Confusão - Base tratada Sprint 4
+<br>
+
+##### 9.7.3.3.5 Construção da rede neural com Word2Vec + CBoW - Sprint 4
+
+&emsp;&emsp; Abaixo é possível observar o relatório de classificação do modelo com o Word2Vec + CBoW da Sprint 4, onde o 0 é negativo, o 1 é neutro e o 2 é positivo. Após isso, é gerada uma matriz de confusão. 
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.66      0.63      0.65       655
+           1       0.71      0.64      0.68       969
+           2       0.69      0.77      0.73      1030
+
+    accuracy                           0.69      2654
+   macro avg       0.69      0.68      0.68      2654
+weighted avg       0.69      0.69      0.69      2654
+```
+&emsp;&emsp; **Código da matriz de confusão:** <br>
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+&emsp;&emsp; **Matriz de Confusão** <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_redeNeuralSeq_word_cbow_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 50: Matriz de Confusão - Word2Vec + CBoW Sprint 4
+<br>
+
+##### 9.7.3.3.6 Construção da rede neural com Word2Vec + Embedding Layer - Sprint 4
+
+&emsp;&emsp; Abaixo é possível observar o relatório de classificação do modelo com o Word2Vec + Embedding Layer da Sprint 4, onde o 0 é negativo, o 1 é neutro e o 2 é positivo. Após isso, é gerada uma matriz de confusão. 
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.68      0.64      0.66       676
+           1       0.68      0.69      0.69       980
+           2       0.70      0.72      0.71       998
+
+    accuracy                           0.69      2654
+   macro avg       0.69      0.68      0.69      2654
+weighted avg       0.69      0.69      0.69      2654
+```
+&emsp;&emsp; **Código da matriz de confusão:** <br>
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+&emsp;&emsp; **Matriz de Confusão** <br>
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_redeNeuralSeq_word_embedding_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 51: Matriz de Confusão - Word2Vec + Embedding Layer Sprint 4
+<br>
+
+#### 9.7.3.4 Exportação com a biblioteca pickle
+
+&emsp;&emsp; A primeira linha abre o arquivo, em modo escrita, que será utilizado para armazenar o modelo de rede neural, nesse caso o desenvolvedor pode escolher o nome do arquivo. A segunda linha utiliza a função pickle.dump(), da biblioteca pickle, para salvar o modelo no arquivo aberto anteriormente. A terceira linha abre o arquivo, em modo leitura, para que a função pickle.load() carrega o conteúdo na variável, convertendo os bytes do arquivo novamente em um objeto modelo de rede neural utilizável. Todos os modelos foram salvos por meio do código abaixo.
+
+```
+with open('nome_escolhido.pkl', 'wb') as arquivo:
+    pickle.dump(model, arquivo)
+with open('nome_escolhido.pkl', 'rb') as arquivo:
+    'nome_escolhido = pickle.load(arquivo)
+```
+
+### 9.7.4 Exportação com a biblioteca pickle
+
+&emsp;&emsp;Os códigos apresentados mostram o processo de construção e treinamento de uma rede neural para classificação de texto, além de fornecer uma maneira de salvar e carregar o modelo treinado para uso posterior, com a utilização da biblioteca pickle.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
