@@ -49,7 +49,7 @@ Colocar o link do artefato (deve estar na pasta src do repositório do projeto).
 ## (Sprint 4) Documentação da proposta de uma nova modelagem
 
 - Arquivo `README.md` referente à entrega: [Modelos](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/modelos.md).
-- - Arquivo `README.md` referente à entrega: [Pré - processamento](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/pre_processamento.md). - Foram feitas algumas mudanças
+- Arquivo `README.md` referente à entrega: [Pré - processamento](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/pre_processamento.md). - Foram feitas algumas mudanças
 
 ## (Sprint 5) Apresentação Final
 
