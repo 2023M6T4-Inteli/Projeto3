@@ -1064,7 +1064,7 @@ with open('nome_escolhido.pkl', 'rb') as arquivo:
 
 #### 9.8.2.2 Construção do modelo
 
-&emsp;&emsp; 1)**Definição do modelo**: <br>
+&emsp;&emsp; 1) **Definição do modelo**: <br>
 &emsp;&emsp; O modelo possui três camadas: uma camada de entrada com 100 neurônios, uma camada oculta com 32 neurônios e uma camada de saída com 3 neurônios para classificação nas categorias negative, neutral e positive. <br>
 
 ```
@@ -1074,14 +1074,14 @@ model.add(Dense(64, activation='relu', input_shape=(100,))) # Camada de entrada 
 model.add(Dense(32, activation='relu'))  # Camada oculta com 32 neurônios
 model.add(Dense(3, activation='softmax'))  # Camada de saída com 3 neurônios para classificação (NEGATIVE, NEUTRAL, POSITIVE)
 ```
-&emsp;&emsp; 2)**Compilação do modelo**: <br>
+&emsp;&emsp; 2) **Compilação do modelo**: <br>
 &emsp;&emsp; Configura-se o otimizador como 'adam', que é um método de otimização popular, e a função de perda como 'sparse_categorical_crossentropy', que é apropriada para problemas de classificação com várias categorias. <br>
 
 ```
 # Compilando o modelo
 model.compile(optimizer='adam’,loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 ```
-&emsp;&emsp; 3)**Treinamento do modelo**: <br>
+&emsp;&emsp; 3) **Treinamento do modelo**: <br>
 &emsp;&emsp; O modelo é treinado utilizando o conjunto de treinamento (X_train e y_train). O treinamento ocorre durante 70 épocas e a validação dos dados de teste é feita utilizando o conjunto de testes (X_test e y_test). <br>
 
 ```
@@ -1089,18 +1089,23 @@ model.compile(optimizer='adam’,loss='sparse_categorical_crossentropy', metrics
 history = model.fit(X_train, y_train, epochs=60, validation_data=(X_test, y_test))
 ```
 
-&emsp;&emsp; 4)**Avaliação do modelo**: Base de dados sprint 3 <br>
+&emsp;&emsp; 4) **Avaliação do modelo**: Base de dados sprint 3 <br>
 &emsp;&emsp; A função evaluate é usada para calcular a perda (loss) e a acurácia (accuracy) do modelo nos dados de teste, e em seguida esses valores são exibidos. <Br>
-	
-(Figura 52)
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/avaliacao_modelo_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 52: Avaliação do modelo Base de dados Sprint 3
+<br>
+
 &emsp;&emsp; No entanto, a métrica que estamos levando em consideração no contexto do nosso projeto atual, é a métrica recall, uma vez que essa métrica dá mais ênfase aos Falsos Negativos, que é quando o modelo classifica erroneamente como positivo, quando na verdade é negativo. <br>
 &emsp;&emsp; Sendo assim, estamos utilizando essa métrica para ter uma melhor precisão do nosso modelo, e aumentar principalmente o acerto de comentários negativos, uma vez que o foco do projeto é justamente esse, não deixar passar batido nenhum comentário que seja negativo. Logo, é necessário que o modelo obtenha bons resultados na métrica recall. <br>
 	
-&emsp;&emsp; 4.1)**Avaliação do modelo**: Base de dados sprint 4 <br>
+&emsp;&emsp; 4.1) **Avaliação do modelo**: Base de dados sprint 4 <br>
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/avaliacao_modelo_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 53: Avaliação do modelo Base de dados Sprint 4
+<br>
 	
-(figura 53)
-	
-&emsp;&emsp; 5)**Precisão do modelo**: <br>
+&emsp;&emsp; 5) **Precisão do modelo**: <br>
 &emsp;&emsp; O código abaixo faz previsões usando o modelo treinado com o conjunto de teste (X_test). <br>
 &emsp;&emsp; Assim sendo, gera-se um relatório de classificação usando a função classification_report do scikit-learn, comparando as classes verdadeiras (y_test) com as classes preditas (y_pred_classes). <br>
 
@@ -1185,7 +1190,10 @@ plt.title('Matriz de Confusão')
 plt.show()	
 ```
 **Sprint 3**:
-(Foto)
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_rede_neural_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 54: Matriz de confusão - Rede Neural Sprint 3
+<br>
 
 &emsp;&emsp; Levando em consideração que: <br>
 - 0 - negativo
@@ -1195,7 +1203,10 @@ plt.show()
 &emsp;&emsp; Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (209), porém, ainda teve um erro de (84) sendo classificado como neutro quando na verdade é negativo e (93) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (177) que pertencem a classe do negativo. <br>
 
 **Sprint 4**:
-(Foto)
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_rede_neural_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 55: Matriz de confusão - Rede Neural Sprint 4
+<br>
 
 &emsp;&emsp; Levando em consideração que: <br>
 - 0 - negativo
@@ -1214,23 +1225,194 @@ Rede neural - Word2vec - Sprint 3:
 - classe 0 (negativo) recall = 54%
 - classe 1 (neutro) recall = 65%
 - classe 2 (positivo) = 59%
-- Matriz de confusão
--- Acertos dos negativos - 209
--- Erros dos negativos - 177
+- Matriz de confusão <br>
+-- Acertos dos negativos - 209 <br>
+-- Erros dos negativos - 177 <br>
 
 Rede neural - Word2vec - Sprint 4:
 - recall = 54% 
 - classe 0 (negativo) recall = 62%
 - classe 1 (neutro) recall = 47%
 - classe 2 (positivo) = 54%
-- Matriz de confusão
--- Acertos dos negativos - 222
--- Erros dos negativos - 138
+- Matriz de confusão <br>
+-- Acertos dos negativos - 222 <br>
+-- Erros dos negativos - 138 <br>
 
+## 9.9 Random Forest - Word2vec
+	
+### 9.9.1 Introdução
 
+&emsp;&emsp; Nesta seção, discutiremos o uso da técnica de Random Forest em combinação com o modelo Word2Vec. O Word2Vec é um modelo de aprendizado de máquina que representa palavras como vetores numéricos, capturando relações semânticas e contextuais entre elas. <br>
+&emsp;&emsp; O Random Forest é um algoritmo de aprendizado supervisionado baseado em ensemble, que combina múltiplas árvores de decisão para tomar decisões finais. Vamos explorar como o uso do Word2Vec em conjunto com a Random Forest pode melhorar a precisão e o desempenho dos modelos de classificação. <br>
 
+### 9.9.2 Método
 
+#### 9.9.2.1 Cross validation
+&emsp;&emsp;Cross validation utilizado para avaliar a capacidade de um modelo de generalizar para novos dados, que consiste em dividir o conjunto de dados em partes menores, treinar o modelo em uma parte e testá-lo em outra. Esse processo é repetido várias vezes e a média das métricas de avaliação é usada para avaliar o desempenho do modelo. <br>
 
+#### 9.9.2.2 Construção do modelo - sem gridsearch
+
+&emsp;&emsp; 1) **Definição do modelo**: <br>
+&emsp;&emsp; 1.1) Carregando os dados: <br>
+```
+df_word2vec = df_word2vec.dropna()
+```
+&emsp;&emsp; 1.2) Separando as features e o target: <br>
+&emsp;&emsp; O target é atribuído à variável target, que contém a coluna 'sentimentoNumerico'. As features são atribuídas à variável features, que contém todas as colunas a partir da coluna 2 até a coluna 102. <br>
+
+```
+target = df_word2vec['sentimentoNumerico']
+features = df_word2vec.iloc[:, 2:102]
+```
+
+&emsp;&emsp; 1.3) Dividindo os dados em treinamento e teste: <br>
+
+```
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+
+# Construindo o modelo Random Forest
+model_rf = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Treinando o modelo
+model_rf.fit(X_train, y_train)
+```
+
+&emsp;&emsp; 2) **Aplicação da validação cruzada**: <br>
+&emsp;&emsp; Validação Cruzada no modelo Random Forest para avaliar o desempenho do modelo em diferentes conjuntos de treinamento e teste. <br>
+
+```
+# Aplicar a validação cruzada
+cv_scores = cross_val_score(model_rf, X_train, y_train, cv=5)  # cv=5 indica 5 folds de validação cruzada
+
+# Imprimir os scores de validação cruzada
+print("Scores de validação cruzada:", cv_scores)
+print("Média dos scores:", np.mean(cv_scores))
+```
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/validacao_cruzada_random_forest.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 56: Validação cruzada - Random Forest
+<br>
+	
+### 9.9.3 Resultados
+#### 9.9.3.1 Random Forest - Word2vec - Precisão (Base de dados sprint 3)
+
+&emsp;&emsp; Avaliação do modelo: <br>
+
+```
+# Avaliando o modelo
+y_pred = model_rf.predict(X_test)
+
+# Gerando o relatório de classificação
+classification_report = classification_report(y_test, y_pred)
+print(classification_report)
+```
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+	         precision    recall  f1-score   support
+
+           0       0.56      0.54      0.55       386
+           1       0.75      0.70      0.73       844
+           2       0.60      0.67      0.63       612
+
+    accuracy                           0.66      1842
+   macro avg       0.64      0.64      0.64      1842
+weighted avg       0.66      0.66      0.66      1842
+
+```
+
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 54% os comentários negativos, 70% os comentários neutros e 67% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 64%.
+
+#### 9.9.3.2 Random Forest - Word2vec - Precisão (Base de dados sprint 4)
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.55      0.54      0.55       360
+           1       0.66      0.57      0.61       597
+           2       0.62      0.70      0.65       651
+
+    accuracy                           0.61      1608
+   macro avg       0.61      0.60      0.60      1608
+weighted avg       0.62      0.61      0.61      1608
+```
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 54% os comentários negativos, 57% os comentários neutros e 70% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 60%. <br>
+
+#### 9.8.3.3 Random Forest - Word2vec - Matriz de confusão
+
+```
+# Gerar a matriz de confusão
+matriz_confusao = confusion_matrix(y_test, y_pred)
+
+# Definir as classes
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+
+# Plotar a matriz de confusão
+plt.figure(figsize=(8, 6))
+sns.heatmap(matriz_confusao, annot=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+	
+**Sprint 3**:
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_random_forest_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 57: Matriz de confusão - Random Forest - Word2vec Sprint 3
+<br>
+
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+	
+&emsp;&emsp; Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (210), porém, ainda teve um erro de (67) sendo classificado como neutro quando na verdade é negativo e (109) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (176) que pertencem a classe do negativo. <br>
+
+**Sprint 4**:
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_random_forest_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 58:  Matriz de confusão - Random Forest - Word2vec Sprint 4
+<br>
+
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+
+&emsp;&emsp; Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (195), porém, ainda teve um erro de (63) sendo classificado como neutro quando na verdade é negativo e (102) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (165) que pertencem a classe do negativo. <br>
+
+## 9.9.4 Conclusão
+
+Random Forest - Word2vec - Sprint 3:
+- recall = 64% 
+- classe 0 (negativo) recall = 54%
+- classe 1 (neutro) recall = 70%
+- classe 2 (positivo) = 67%
+- Matriz de confusão <br>
+-- Acertos dos negativos - 210 <br>
+-- Erros dos negativos - 176 <br>
+
+Random Forest - Word2vec - Sprint 4:
+- recall = 60% 
+- classe 0 (negativo) recall = 54%
+- classe 1 (neutro) recall = 57%
+- classe 2 (positivo) = 70%
+- Matriz de confusão <br>
+-- Acertos dos negativos - 195 <br>
+-- Erros dos negativos - 165 <br>
 
 
 
