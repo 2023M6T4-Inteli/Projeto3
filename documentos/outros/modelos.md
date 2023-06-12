@@ -1049,6 +1049,201 @@ with open('nome_escolhido.pkl', 'rb') as arquivo:
 
 &emsp;&emsp;Os códigos apresentados mostram o processo de construção e treinamento de uma rede neural para classificação de texto, além de fornecer uma maneira de salvar e carregar o modelo treinado para uso posterior, com a utilização da biblioteca pickle.
 
+## 9.8 Rede Neural sem embedding - Word2Vec
+
+### 9.8.1 Introdução
+
+&emsp;&emsp; Uma rede neural é um modelo computacional inspirado no funcionamento do cérebro humano. É composta por unidades chamadas neurônios, que estão organizadas em camadas interconectadas. Cada neurônio recebe entradas ponderadas, realiza um cálculo e produz uma saída. <br>
+&emsp;&emsp; Através de um processo de treinamento, uma rede neural pode aprender a mapear entradas para saídas, permitindo realizar tarefas como classificação, regressão, processamento de linguagem natural, entre outras. <br>
+&emsp;&emsp; Neste contexto, estamos discutindo uma Rede Neural sem a utilização de embedding, mas com Word2vec. O Word2Vec é um algoritmo para representação de palavras como vetores densos, capturando as relações semânticas e contextuais entre elas. <br>
+
+### 9.8.2 Método
+#### 9.8.2.1 Cross validation 
+
+&emsp;&emsp; O método faz o uso de validação cruzada (cross-validation) para avaliar o desempenho da rede neural. A validação cruzada é uma técnica utilizada para avaliar a capacidade de generalização de um modelo. Consiste em dividir o conjunto de dados em várias partes chamadas de "folds". O modelo é treinado em uma combinação de folds e testado nos folds restantes. Esse processo é repetido várias vezes, alternando os folds de treinamento e teste, e os resultados são combinados para obter uma estimativa mais robusta do desempenho do modelo.
+
+#### 9.8.2.2 Construção do modelo
+
+&emsp;&emsp; 1)**Definição do modelo**: <br>
+&emsp;&emsp; O modelo possui três camadas: uma camada de entrada com 100 neurônios, uma camada oculta com 32 neurônios e uma camada de saída com 3 neurônios para classificação nas categorias negative, neutral e positive. <br>
+
+```
+# Criando o modelo da rede neural
+model = Sequential()
+model.add(Dense(64, activation='relu', input_shape=(100,))) # Camada de entrada com 100 neurônios
+model.add(Dense(32, activation='relu'))  # Camada oculta com 32 neurônios
+model.add(Dense(3, activation='softmax'))  # Camada de saída com 3 neurônios para classificação (NEGATIVE, NEUTRAL, POSITIVE)
+```
+&emsp;&emsp; 2)**Compilação do modelo**: <br>
+&emsp;&emsp; Configura-se o otimizador como 'adam', que é um método de otimização popular, e a função de perda como 'sparse_categorical_crossentropy', que é apropriada para problemas de classificação com várias categorias. <br>
+
+```
+# Compilando o modelo
+model.compile(optimizer='adam’,loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+```
+&emsp;&emsp; 3)**Treinamento do modelo**: <br>
+&emsp;&emsp; O modelo é treinado utilizando o conjunto de treinamento (X_train e y_train). O treinamento ocorre durante 70 épocas e a validação dos dados de teste é feita utilizando o conjunto de testes (X_test e y_test). <br>
+
+```
+# Treinamento do modelo
+history = model.fit(X_train, y_train, epochs=60, validation_data=(X_test, y_test))
+```
+
+&emsp;&emsp; 4)**Avaliação do modelo**: Base de dados sprint 3 <br>
+&emsp;&emsp; A função evaluate é usada para calcular a perda (loss) e a acurácia (accuracy) do modelo nos dados de teste, e em seguida esses valores são exibidos. <Br>
+	
+(Figura 52)
+&emsp;&emsp; No entanto, a métrica que estamos levando em consideração no contexto do nosso projeto atual, é a métrica recall, uma vez que essa métrica dá mais ênfase aos Falsos Negativos, que é quando o modelo classifica erroneamente como positivo, quando na verdade é negativo. <br>
+&emsp;&emsp; Sendo assim, estamos utilizando essa métrica para ter uma melhor precisão do nosso modelo, e aumentar principalmente o acerto de comentários negativos, uma vez que o foco do projeto é justamente esse, não deixar passar batido nenhum comentário que seja negativo. Logo, é necessário que o modelo obtenha bons resultados na métrica recall. <br>
+	
+&emsp;&emsp; 4.1)**Avaliação do modelo**: Base de dados sprint 4 <br>
+	
+(figura 53)
+	
+&emsp;&emsp; 5)**Precisão do modelo**: <br>
+&emsp;&emsp; O código abaixo faz previsões usando o modelo treinado com o conjunto de teste (X_test). <br>
+&emsp;&emsp; Assim sendo, gera-se um relatório de classificação usando a função classification_report do scikit-learn, comparando as classes verdadeiras (y_test) com as classes preditas (y_pred_classes). <br>
+
+```
+# Previsões do modelo
+y_pred = model.predict(X_test)
+y_pred_classes = np.argmax(y_pred, axis=1)
+
+# Gerar o relatório de classificação
+report = classification_report(y_test, y_pred_classes)
+
+# Imprimir a tabela de classificação
+print(report)
+```
+	
+### 9.8.3 Resultados
+#### 9.8.3.1 Rede Neural - Precisão (Base de dados sprint 3)
+	
+&emsp;&emsp; Portanto, levando em conta toda a explicação acima e a definição da métrica escolhida, os resultados obtidos com esse modelo, foi o seguinte: <br>
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+                precision    recall  f1-score   support
+
+           0       0.53      0.54      0.53       386
+           1       0.69      0.65      0.67       844
+           2       0.56      0.59      0.57       612
+
+    accuracy                           0.61      1842
+   macro avg       0.59      0.59      0.59      1842
+weighted avg       0.61      0.61      0.61      1842 
+```
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+	
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 54% os comentários negativos, 65% os comentários neutros e 59% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 59%. <br>
+	
+#### 9.8.3.2 Rede Neural - Precisão (Base de dados sprint 4)
+
+&emsp;&emsp; **Relatório de Classificação** <br>
+```
+             precision    recall  f1-score   support
+
+           0       0.40      0.62      0.49       360
+           1       0.62      0.47      0.54       597
+           2       0.58      0.54      0.56       651
+
+    accuracy                           0.53      1608
+   macro avg       0.53      0.54      0.53      1608
+weighted avg       0.56      0.53      0.53      1608
+```
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+	
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 62% os comentários negativos, 47% os comentários neutros e 54% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 54%.
+
+#### 9.8.3.3 Rede Neural - Matriz de confusão
+	
+&emsp;&emsp; A matriz de confusão,também conhecida como tabela de contingência, é utilizada para visualizar o desempenho de um modelo de classificação. É muito útil quando se trabalha com problemas de classificação em machine learning. <br>
+&emsp;&emsp; A matriz de confusão apresenta uma tabela com duas dimensões: as classes reais (verdadeiras) e as classes previstas (estimadas) pelo modelo. Cada célula da matriz representa o número de instâncias que foram classificadas de determinada forma pelo modelo. <br>
+	
+&emsp;&emsp; Código da matriz de confusão:
+	
+```
+cm = confusion_matrix(y_test, y_pred_classes)
+
+# Definir as classes
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+
+# Plotar a matriz de confusão
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()	
+```
+**Sprint 3**:
+(Foto)
+
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+	
+&emsp;&emsp; Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (209), porém, ainda teve um erro de (84) sendo classificado como neutro quando na verdade é negativo e (93) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (177) que pertencem a classe do negativo. <br>
+
+**Sprint 4**:
+(Foto)
+
+&emsp;&emsp; Levando em consideração que: <br>
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+
+&emsp;&emsp; Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (222), porém, ainda teve um erro de (54) sendo classificado como neutro quando na verdade é negativo e (84) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (138) que pertencem a classe do negativo. <br>
+
+### 9.8.3 Conclusão
+
+&emsp;&emsp; Os códigos apresentados acima demonstram todo o processo de construção e treinamento de uma rede neural para classificação de texto, com todos os passos necessários para a construção do modelo de uma rede neural para machine learning, com relatório de classificação, precisão e matriz de confusão.
+&emsp;&emsp; Além disso, é importante ressaltar que esse modelo de rede neural foi criado um utilizando a base de dados antiga já tratada e o outro utilizando a base atual, com um novo tratamento. Sendo assim a comparação ficou a seguinte:
+
+Rede neural - Word2vec - Sprint 3:
+- recall = 59% 
+- classe 0 (negativo) recall = 54%
+- classe 1 (neutro) recall = 65%
+- classe 2 (positivo) = 59%
+- Matriz de confusão
+-- Acertos dos negativos - 209
+-- Erros dos negativos - 177
+
+Rede neural - Word2vec - Sprint 4:
+- recall = 54% 
+- classe 0 (negativo) recall = 62%
+- classe 1 (neutro) recall = 47%
+- classe 2 (positivo) = 54%
+- Matriz de confusão
+-- Acertos dos negativos - 222
+-- Erros dos negativos - 138
+
+
+
+
+
+
+
+
+
+	
+
+
+
+	
+
+
+
+
 
 
 
