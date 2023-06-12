@@ -1414,46 +1414,191 @@ Random Forest - Word2vec - Sprint 4:
 -- Acertos dos negativos - 195 <br>
 -- Erros dos negativos - 165 <br>
 
+## 9.10 XGboost - Bag of Words	
+### 9.10.1 Introdução
 
+&emsp;&emsp; Nesta seção, iremos falar sobre o uso do algoritmo XGboost, em combinação com o processo de vetorização Bag of Words. Como falado em tópicos anteriores, o modelo Bag of Words é uma técnica de representação de texto que transforma cada documento em um vetor numérico, considerando a frequência das palavras no documento. <br>
+&emsp;&emsp; XGBoost, que significa Extreme Gradient Boosting, é um algoritmo de aprendizado de máquina que se baseia no método de boosting, uma técnica que combina várias árvores de decisão fracas para criar um modelo preditivo mais forte. Assim, iremos analisar como foi o desenvolvimento código e resultado final do conjunto desse algoritmo com o processo de vetorização BoW. <br>
 
+### 9.10.2 Método
+&emsp;&emsp; Durante a construção do algoritmo, utilizamos alguns métodos para buscarmos uma melhor acurácia e obter um melhores resultados. Tendo isso em vista, iremos demonstrar como foi o processo sem essas melhorias e pós essas melhorias. <br>
+&emsp;&emsp;Após a fase de construção do processo de vetorização e obtendo a frequência das palavras e o vocabulário final de todo o conjunto de palavras, começamos a construção do algoritmo. Que se deu da seguinte forma: <br>
 
+#### 1) Definição do modelo: 
+&emsp;&emsp; 1.1) Carregando os dados (vocabulário final das palavras): <br>
+```
+bow_model
+```	
+&emsp;&emsp; 1.2) Dividindo os dados em treinamento e teste: <br>
+```
+X_treino, X_teste, y_treino, y_teste = train_test_split(bow_model, sentimento, test_size=0.2, random_state=42)
+
+# Criar e treinar o modelo XGBoost
+modelo_xgb = xgb.XGBClassifier()
+
+modelo_xgb.fit(X_treino, y_treino)
+
+# Fazer a predição usando os dados de teste
+predicao_numerica_xgb = modelo_xgb.predict(X_teste)
+
+# Decodificar as classes preditas
+predicao_xgb = encoder.inverse_transform(predicao_numerica_xgb)
+```	
+&emsp;&emsp; 1.3) Matriz de Confusão: <br>
+```
+cm = confusion_matrix(y_teste, predicao_numerica_xgb)
+classes = ['Classe 1', 'Classe 2', 'Classe 3']
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot
+=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+<img src="https://cdn.discordapp.com/attachments/937464667687776307/1117834017245499424/Matriz_confusao.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Matriz Confusão - XGboost
+
+#### 2) Aplicação da validação Cruzada:
+&emsp;&emsp; Validação Cruzada no modelo XGboost para avaliar o desempenho do modelo em diferentes conjuntos de treinamento e teste. <br>
+```
+from sklearn.model_selection import cross_val_predict
+
+# Realizar a validação cruzada e obter as predições
+predicoes_cv = cross_val_predict(modelo_xgb, bow_model, sentimento, cv=7)
+
+# Decodificar as classes preditas
+predicoes_cv_decodificadas = encoder.inverse_transform(predicoes_cv)
+
+print(classification_report(sentimento, predicoes_cv_decodificadas))
+```
+<br>
 	
+#### 3) Aplicação do GridSearch (Hiperparâmetros):
+&emsp;&emsp; Aplicação de Hiperparâmetros no modelo XGboost para buscar outras métricas que se encaixem melhor no modelo: <br>
+```
+# Definir a grade de valores para os hiperparâmetros a serem testados
+parametros = {
+    'learning_rate': [0.1, 0.01],
+    'n_estimators': [100, 200],
+    'max_depth': [3, 5],
+    'subsample': [0.6, 0.8],
+    'colsample_bytree': [0.6, 0.8]
+}
 
+# Criar uma instância do modelo XGBoost
+modelo_xgb = xgb.XGBClassifier()
 
+# Criar uma instância do objeto GridSearchCV
+grid = GridSearchCV(modelo_xgb, parametros, cv=5, scoring='accuracy', n_jobs=-1)
 
+# Treinar o modelo com a busca exaustiva de hiperparâmetros
+grid.fit(X_treino, y_treino)
+
+# Exibir os resultados da busca exaustiva
+print('Melhores hiperparâmetros:', grid.best_params_)
+
+# Criar um novo modelo com os melhores hiperparâmetros encontrados
+modelo_xgb = xgb.XGBClassifier(**grid.best_params_)
+modelo_xgb.fit(X_treino, y_treino)
+
+# Fazer a predição usando os dados de teste
+predicao_numerica_xgb = modelo_xgb.predict(X_teste)
+
+# Decodificar as classes preditas
+predicao_xgb = encoder.inverse_transform(predicao_numerica_xgb)
+
+print(classification_report(y_teste, predicao_xgb))
+```
+<br>
 	
+### 9.10.3 Resultados
+#### Avaliação do modelo
 
+&emsp;&emsp; 1) Definição do modelo: <br>
 
+```
+		precision    recall  f1-score   support
 
+           0       0.69      0.59      0.63       360
+           1       0.64      0.74      0.69       597
+           2       0.74      0.70      0.72       651
 
+    accuracy                           0.69      1608
+   macro avg       0.69      0.68      0.68      1608
+weighted avg       0.69      0.69      0.69      1608
 
+```
+<br>
+&emsp;&emsp; Levando em consideração que: <br>
+	
+- 0 = negativo
+	
+- 1 = neutro
+	
+- 2 = positivo
+	
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 59% os comentários negativos, 74% os comentários neutros e 70% os comentários positivos. Portanto, o recall geral obtido com esse modelo foi de 68%.
 
+&emsp;&emsp; 2) Cross-Validation: <br>
 
+```
+              precision    recall  f1-score   support
 
+           0       0.67      0.57      0.61      1970
+           1       0.60      0.69      0.64      2918
+           2       0.70      0.67      0.68      3152
 
+    accuracy                           0.65      8040
+   macro avg       0.66      0.64      0.65      8040
+weighted avg       0.66      0.65      0.65      8040
+```
+<br>
+&emsp;&emsp; Levando em consideração que: <br>
+	
+- 0 = negativo
+	
+- 1 = neutro
+	
+- 2 = positivo
+	
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 57% os comentários negativos, 69% os comentários neutros e 67% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 64%.
 
+&emsp;&emsp; 3) GridSearch: <br>
 
+```
+Melhores hiperparâmetros: {'colsample_bytree': 0.8, 'learning_rate': 0.1, 'max_depth': 5, 'n_estimators': 200, 'subsample': 0.6}
+             
+		precision    recall  f1-score   support
 
+           0       0.68      0.58      0.63       360
+           1       0.62      0.75      0.68       597
+           2       0.74      0.66      0.70       651
 
+    accuracy                           0.68      1608
+   macro avg       0.68      0.66      0.67      1608
+weighted avg       0.68      0.68      0.68      1608
 
+```
+<br>
+&emsp;&emsp; Levando em consideração que: <br>
+	
+- 0 = negativo
+	
+- 1 = neutro
+	
+- 2 = positivo
+	
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 58% os comentários negativos, 75% os comentários neutros e 66% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 66%.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 9.10.4 Conclusão
+	
+XGboost - BoW: <br>
+- recall = 66% 
+	- classe 0 (negativo) recall = 58%
+	- classe 1 (neutro) recall = 75%
+	- classe 2 (positivo) = 66%
+<br>
+A partir dos valores apresentados acima, é possível concluir que não é possível continuar utilizando o modelo de XGboost com o processo BoW, para o desenvolvimento do projeto.
