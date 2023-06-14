@@ -102,4 +102,104 @@ dtype: int64
 &emsp;&emsp;A conclusão obtida de qual será o melhor método de vetorização se dará na construção dos modelos de machine learning que será explicado na próxima sessão, pois assim poderemos comparar diretamente a acurácia e recall dos diferentes modelos.
 
 
+## 8.3 TF - IDF
+
+### 8.3.1 Introdução
+
+&emsp;&emsp; O TF-IDF (Term Frequency-Inverse Document Frequency) é uma técnica que permite avaliar a importância relativa de um termo em um documento dentro de um conjunto de documentos. O modelo é composto por duas partes principais: a frequência do termo (TF) e a frequência inversa do documento (IDF). A frequência do termo mede quantas vezes um termo específico aparece em um documento, enquanto a frequência inversa do documento mede a raridade do termo em toda a coleção de documentos.
+
+### 8.3.2 Método
+
+&emsp;&emsp; O código que será apresentado abaixo utiliza o método TfidfVectorizer() da biblioteca scikit-learn (sklearn) para calcular o TF-IDF dos documentos presentes na coluna 'texto_tratado' de um dataframe chamado 'df'. E no final, o dataframe 'df_final' conterá todas as colunas do dataframe original, além das colunas correspondentes às pontuações TF-IDF de cada termo nos documentos.
+
+### 8.3.3 Resultados
+
+&emsp;&emsp; A função pd.read_csv() é uma função da biblioteca pandas (pd) que permite ler dados de um arquivo CSV e retorná-los como um dataframe. Após a execução do código, ao imprimir o 'df', será mostrada uma representação tabular dos dados contidos no arquivo.
+
+```
+df = pd.read_csv('caminho_arquivo’)
+df
+```
+
+&emsp;&emsp; A primeira linha cria um objeto TfidfVectorizer(), que é uma classe disponível na biblioteca scikit-learn, responsável por transformar textos em uma representação numérica usando o cálculo do TF-IDF. Em seguida, o método fit_transform() é aplicado aos comentários, que já passaram pelo pré - processamento, presente na coluna 'texto_tratado' do 'df'. Isso transforma os documentos em uma matriz numérica esparsa, onde cada linha representa um documento e cada coluna representa um termo ponderado pelo TF-IDF.
+
+```
+tfidf_vectorizer = TfidfVectorizer()
+
+vetorizado = tfidf_vectorizer.fit_transform(df['texto_tratado'])
+```
+
+&emsp;&emsp; Após a vetorização, a variável 'feature_names' armazena os termos que foram utilizados na vetorização, que serão colunas do dataframe resultante. A seguir, a matriz numérica esparsa resultante é convertida em um dataframe chamado 'df_vetorizado', onde cada coluna corresponde a um termo e cada linha representa um documento. Os valores são preenchidos com as pontuações TF-IDF.
+
+```
+feature_names = tfidf_vectorizer.get_feature_names_out()
+
+df_vetorizado = pd.DataFrame(vetorizado.toarray(), columns=feature_names)
+```
+
+&emsp;&emsp; Por último, o 'df' é concatenado com o dataframe resultante da vetorização 'df_vetorizado' ao longo do eixo das colunas (axis=1), utilizando a função concat() da biblioteca pandas. Isso adiciona as colunas com as pontuações TF-IDF ao dataframe original, criando assim o dataframe final, chamado de 'df_final'.
+
+```
+df_final = pd.concat([df, df_vetorizado], axis=1)
+
+df_final
+```
+
+&emsp;&emsp; Para fins de teste, o método value_counts() é aplicado para que retorne uma contagem dos valores únicos presentes na coluna especificada. Ele conta quantas vezes cada valor aparece na coluna e retorna os resultados em ordem decrescente, com o valor mais frequente no topo. Somente algumas colunas foram testadas, e as colunas vão ser apresentadas abaixo.
+
+```
+df_final['ser'].value_counts()
+
+output:
+0.000000    8014
+0.136855       1
+0.089819       1
+0.178045       1
+0.162049       1
+0.147501       1
+0.176240       1
+0.090406       1
+0.073729       1
+0.264882       1
+0.436092       1
+0.064391       1
+0.145558       1
+0.133492       1
+0.405338       1
+0.190045       1
+0.169664       1
+0.314675       1
+0.081824       1
+0.149980       1
+0.066284       1
+0.177696       1
+0.143129       1
+0.478244       1
+0.164816       1
+0.167999       1
+0.120388       1
+Name: ser, dtype: int64
+```
+
+```
+df_final['aa'].value_counts()
+
+output:
+0.000000    8039
+0.215284       1
+Name: aa, dtype: int64
+```
+
+```
+df_final['𝚜𝚎𝚞𝚜'].value_counts()
+
+output:
+0.000000    8039
+0.131107       1
+Name: 𝚜𝚎𝚞𝚜, dtype: int64
+```
+
+### 8.3.4 Conclusão
+
+&emsp;&emsp; O uso do TF-IDF em conjunto com técnicas de vetorização e manipulação de dados, como apresentado no código, é uma ferramenta valiosa para processamento de texto e análise de dados, fornecendo insights sobre a importância relativa dos termos em um conjunto de documentos e permitindo uma melhor compreensão e interpretação dos textos.
 
