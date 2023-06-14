@@ -61,4 +61,4 @@ Colocar o link dos artefatos (devem estar nas pastas videos e src do repositóri
 
 ## (Sprint 5) Documentação da Solução
 
-Preencher conforme a descrição do artefato na Adalove.
+- Arquivo `README.md` referente à entrega: [Novo processo de vetorização - TF-IDF](https://github.com/2023M6T4-Inteli/Projeto3/blob/main/documentos/outros/vetorizacao.md).
