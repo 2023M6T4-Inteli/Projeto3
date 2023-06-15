@@ -250,7 +250,7 @@ weighted avg       0.69      0.69      0.69      2654
 
 &emsp;&emsp; Com esses resultados, pode-se observar que na Sprint 3 a rede neural apresentou um desempenho ligeiramente melhor em termos de recall para as classes 0 (negativo) e 1 (neutro) em comparação com a Sprint 4. Para a classe 0, o recall diminuiu de 70% para 63%, e para a classe 1, o recall diminuiu de 74% para 64%. No entanto, para a classe 2 (positivo), o recall se manteve estável em ambos os modelos, com um valor de 0,77. Já que o grupo definiu que a métrica de recall é a mais relevante, é possível concluir que a rede neural com o método de sequência de palavras aplicado na base com Word2Vec e CBoW teve um desempenho um pouco melhor na Sprint 3, especialmente para as classes 0 e 1. No entanto, o recall para a classe 2 se manteve consistente em ambos os modelos.
 
-### 10.3.9 Rede Neural (Sequência de palavras) - Word2Vec + CBoW
+### 10.3.9 Rede Neural (Sequência de palavras) - Word2Vec + Embedding Layer
 &emsp;&emsp; O modelo Rede Neural com o método de sequência de palavra aplicado na base com o Word2Vec e Embedding Layer da Sprint 3, obteve esses resultados:
 
 ```
