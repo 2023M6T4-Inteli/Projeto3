@@ -1611,15 +1611,15 @@ A partir dos valores apresentados acima, é possível concluir que não é poss�
 ### 9.11.1 Método
 #### 9.11.2.1 Aplicação de hiperparâmetros <br>
 
-- 1) **class_weight='balanced'**: esse hiperparâmetro define o peso das classes durante o treinamento. A opção 'balanced' ajusta automaticamente os pesos inversamente proporcionais às frequências das classes. Isso é útil quando temos um conjunto de dados desequilibrado, onde uma classe é muito mais frequente do que as outras.
+- **class_weight='balanced'**: esse hiperparâmetro define o peso das classes durante o treinamento. A opção 'balanced' ajusta automaticamente os pesos inversamente proporcionais às frequências das classes. Isso é útil quando temos um conjunto de dados desequilibrado, onde uma classe é muito mais frequente do que as outras.
 
-- 2) **max_depth=10**: hiperparâmetro que define a profundidade máxima da árvore. A profundidade máxima da árvore é limitada a 10, o que impede que ela cresça muito e ajuda a evitar o overfitting.
+- **max_depth=10**: hiperparâmetro que define a profundidade máxima da árvore. A profundidade máxima da árvore é limitada a 10, o que impede que ela cresça muito e ajuda a evitar o overfitting.
 
-- 3) **min_samples_split=10**: hiperparâmetro que define o número mínimo de amostras necessárias para dividir um nó interno da árvore. Definido como 10, o que significa que um nó só será dividido se houver pelo menos 10 amostras nele.
+- **min_samples_split=10**: hiperparâmetro que define o número mínimo de amostras necessárias para dividir um nó interno da árvore. Definido como 10, o que significa que um nó só será dividido se houver pelo menos 10 amostras nele.
 
-- 4) **min_samples_leaf=3**: é o número mínimo de amostras necessárias em uma folha. Estamos definindo-o como 3, o que garante que cada folha tenha pelo menos 3 amostras.
+- **min_samples_leaf=3**: é o número mínimo de amostras necessárias em uma folha. Estamos definindo-o como 3, o que garante que cada folha tenha pelo menos 3 amostras.
 
-- 5) **max_features='sqrt'**: a implementação do algoritmo de Árvore de Decisão selecionará aleatoriamente a raiz quadrada do número total de recursos a serem usados em cada divisão. Isso pode aumentar a variabilidade das árvores construídas e melhorar o desempenho geral do modelo.
+- **max_features='sqrt'**: a implementação do algoritmo de Árvore de Decisão selecionará aleatoriamente a raiz quadrada do número total de recursos a serem usados em cada divisão. Isso pode aumentar a variabilidade das árvores construídas e melhorar o desempenho geral do modelo.
 	
 #### 9.11.2.2 Construção do modelo <br>
 
@@ -1658,7 +1658,7 @@ classification_report_dt = classification_report(y_test, y_pred_dt)
 # Imprimir o relatório de classificação
 print("Relatório de Classificação:")
 print(classification_report_dt)
-	
+```
 
 Relatório de Classificação:
 ```
@@ -1672,6 +1672,7 @@ Relatório de Classificação:
     accuracy                           0.55      1842
    macro avg       0.55      0.56      0.54      1842
 weighted avg       0.59      0.55      0.56      1842
+
 ```
 
 &emsp;&emsp;  Levando em consideração que:
