@@ -1602,3 +1602,171 @@ XGboost - BoW: <br>
 	- classe 2 (positivo) = 66%
 <br>
 A partir dos valores apresentados acima, é possível concluir que não é possível continuar utilizando o modelo de XGboost com o processo BoW, para o desenvolvimento do projeto.
+
+## 9.11 Decision Tree
+### 9.11.1 Introdução
+&emsp;&emsp; A Árvore de Decisão é um algoritmo popular de aprendizado de máquina utilizado para resolver problemas de classificação e regressão. É uma técnica de modelagem que usa uma estrutura em forma de árvore para tomar decisões com base em regras condicionais. <br>
+&emsp;&emsp; Uma árvore de decisão é construída a partir de um conjunto de dados de treinamento, onde cada instância é representada por um conjunto de características (também conhecido como atributos). O objetivo do algoritmo é dividir o conjunto de dados em subconjuntos cada vez mais puros ou homogêneos, com base nas características fornecidas, até que a classificação final seja alcançada. <br>
+	
+### 9.11.1 Método
+#### 9.11.2.1 Aplicação de hiperparâmetros <br>
+
+- 1) **class_weight='balanced'**: esse hiperparâmetro define o peso das classes durante o treinamento. A opção 'balanced' ajusta automaticamente os pesos inversamente proporcionais às frequências das classes. Isso é útil quando temos um conjunto de dados desequilibrado, onde uma classe é muito mais frequente do que as outras.
+
+- 2) **max_depth=10**: hiperparâmetro que define a profundidade máxima da árvore. A profundidade máxima da árvore é limitada a 10, o que impede que ela cresça muito e ajuda a evitar o overfitting.
+
+- 3) **min_samples_split=10**: hiperparâmetro que define o número mínimo de amostras necessárias para dividir um nó interno da árvore. Definido como 10, o que significa que um nó só será dividido se houver pelo menos 10 amostras nele.
+
+- 4) **min_samples_leaf=3**: é o número mínimo de amostras necessárias em uma folha. Estamos definindo-o como 3, o que garante que cada folha tenha pelo menos 3 amostras.
+
+- 5) **max_features='sqrt'**: a implementação do algoritmo de Árvore de Decisão selecionará aleatoriamente a raiz quadrada do número total de recursos a serem usados em cada divisão. Isso pode aumentar a variabilidade das árvores construídas e melhorar o desempenho geral do modelo.
+	
+#### 9.11.2.2 Construção do modelo <br>
+
+&emsp;&emsp; 1) **Definição do modelo de árvore de decisão**: <br>
+	
+```
+# Construir o modelo de Árvore de Decisão com hiperparâmetros ajustados
+model_dt = DecisionTreeClassifier(class_weight='balanced', max_depth=10, min_samples_split=8, min_samples_leaf=3, max_features='sqrt')
+```
+&emsp;&emsp; No código acima, estamos construindo o modelo de Árvore de Decisão com hiperparâmetros ajustados. <br>
+
+2) **Treinando o modelo**: <br>
+
+```
+model_dt.fit(X_train, y_train)
+```
+&emsp;&emsp; A linha model_dt.fit(X_train, y_train) treina o modelo de Árvore de Decisão com os dados de treinamento X_train e os rótulos correspondentes y_train. O modelo aprenderá a mapear os recursos para as classes com base nos hiperparâmetros fornecidos. <br>
+
+3) **Previsões do modelo**: <br>
+
+```
+# Fazendo previsões no conjunto de teste
+y_pred_dt = model_dt.predict(X_test)
+```
+&emsp;&emsp; A linha y_pred_dt = model_dt.predict(X_test) aplica o modelo treinado model_dt aos dados de teste X_test para fazer previsões das classes. As previsões são armazenadas na variável y_pred_dt. <br>
+
+### 9.11.3 Resultados
+#### 9.11.3.1 Decision tree - Precisão (Base de dados sprint 3)
+
+&emsp;&emsp; Avaliação do modelo:<br>
+
+```
+# Gerar o relatório de classificação
+classification_report_dt = classification_report(y_test, y_pred_dt)
+
+# Imprimir o relatório de classificação
+print("Relatório de Classificação:")
+print(classification_report_dt)
+	
+
+Relatório de Classificação:
+```
+
+              precision    recall  f1-score   support
+
+           0       0.42      0.56      0.48       386
+           1       0.75      0.51      0.61       844
+           2       0.49      0.59      0.53       612
+
+    accuracy                           0.55      1842
+   macro avg       0.55      0.56      0.54      1842
+weighted avg       0.59      0.55      0.56      1842
+```
+
+&emsp;&emsp;  Levando em consideração que:
+- 0 - negativo
+- 1- neutro 
+- 2 - positivo
+
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 56% os comentários negativos, 51% os comentários neutros e 59% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 56%. <br>
+
+#### 9.11.3.2 Decision tree - Precisão (Base de dados sprint 4)
+
+Relatório de Classificação:
+```
+              precision    recall  f1-score   support
+
+           0       0.42      0.53      0.47       360
+           1       0.59      0.48      0.53       597
+           2       0.57      0.59      0.58       651
+
+    accuracy                           0.54      1608
+   macro avg       0.53      0.53      0.53      1608
+weighted avg       0.55      0.54      0.54      1608
+```
+
+&emsp;&emsp; Levando em consideração que:
+- 0 - negativo
+- 1 - neutro 
+- 2 - positivo
+
+&emsp;&emsp; Pode-se concluir que o modelo acerta com um recall de 53% os comentários negativos, 48% os comentários neutros e 59% os comentários positivos.
+Portanto, o recall geral obtido com esse modelo foi de 53%.
+
+#### 9.11.3.3 Decision tree - Matriz de confusão
+
+Código da matriz de confusão:
+
+```
+# Gerar a matriz de confusão
+cm_decisiontree = confusion_matrix(y_test, y_pred_dt)
+
+# Definir as classes
+classes = np.unique(target)
+
+# Plotar a matriz de confusão
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm_decisiontree, annot=True, cmap='Blues', fmt='g', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Classe Predita')
+plt.ylabel('Classe Verdadeira')
+plt.title('Matriz de Confusão')
+plt.show()
+```
+
+**Sprint 3**:
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_decision_tree_sprint3.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 59: Matriz de confusão - Decision Tree Sprint 3
+<br>
+
+&emsp;&emsp; Levando em consideração que:
+- Classe 1 - negativos
+- Classe 2 - neutros
+- Classe 3 - positivos
+
+&emsp;&emsp; Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (217), porém, ainda teve um erro de (46) sendo classificado como neutro quando na verdade é negativo e (123) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (169) que pertencem a classe do negativo. <br>
+
+**Sprint 4**:
+
+<img src="https://github.com/2023M6T4-Inteli/Projeto3/blob/main/assets/imagens/matriz_confusao_decision_tree_sprint4.png">
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figura 60: Matriz de confusão - Decision Tree Sprint 4
+<br>
+
+&emsp;&emsp; Levando em consideração que:
+- Classe 1 - negativos
+- Classe 2 - neutros
+-Classe 3 - positivos
+
+&emsp;&emsp;Pode-se concluir, que de acordo com a matriz de confusão acima, o modelo teve um alto acerto sobre a classe dos negativos (194), porém, ainda teve um erro de (89) sendo classificado como neutro quando na verdade é negativo e (77) sendo classificado como positivo quando é negativo. Logo, estamos em busca do aumento de acertos da classe negativa e diminuição desses erros, em que o modelo está classificando erroneamente um total de (166) que pertencem a classe do negativo. <br>
+
+## 9.9.4 Conclusão
+
+Decision Tree - Word2vec - Sprint 3:
+- recall = 56%
+- classe 0 (negativo) recall = 56%
+- classe 1 (neutro) recall = 51%
+- classe 2 (positivo) = 59%
+- Matriz de confusão
+-- Acertos dos negativos - 217
+-- Erros dos negativos - 169
+
+Decision Tree - Word2vec - Sprint 4:
+- recall = 53%
+- classe 0 (negativo) recall = 53%
+- classe 1 (neutro) recall = 48%
+- classe 2 (positivo) = 59%
+- Matriz de confusão
+-- Acertos dos negativos - 194
+-- Erros dos negativos - 166
