@@ -32,9 +32,9 @@ def sentiment_chart3(df2):
     replace_dict = {2: 'Positivo', 1: 'Neutro', 0: 'Negativo'}
     df3['classificacao'] = df3['classificacao'].replace(replace_dict)
 
-    plt.figure(figsize=(18, 6), facecolor='#11111E') ##11111E
+    plt.figure(figsize=(18, 6), facecolor='#0e1117') #0e1117
     plt.rcParams['text.color'] = '#FFFFFF'  # Definir a cor do texto como branco
-    plt.rcParams['axes.facecolor'] = '#11111E'  # Definir a cor de fundo como #11111E
+    plt.rcParams['axes.facecolor'] = '#0e1117'  # Definir a cor de fundo como #0e1117
 
     count_sentiment = df2['classificacao'].value_counts()
     count_sentiment.plot(kind='barh', color=['#0000FF','#00FF00','#FF0000'])
