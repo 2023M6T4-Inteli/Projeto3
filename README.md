@@ -33,7 +33,8 @@ O Banco BTG Pactual enfrenta um desafio na área de Marketing em entender as nec
   &emsp;| T4_G5_V2_PLN_Document.pdf<br>
   &emsp;| T4_G5_V2_PLN_Document.docx<br>
 |--> src<br>
-  &emsp;|--> Código Fonte<br>
+  &emsp;|--> StreamLit (Código fonte)<br>
+  &emsp;|--> Modelos<br>
   &emsp;|--> Notebook<br>
   &emsp;|--> readme.md<br>
 | readme.md<br>
@@ -53,17 +54,12 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 Acrescentar as informações necessárias para instalação do projeto, assim como as versões utilizadas (uso do projeto).
 
 
-## 💻 Configuração de Desenvolvimento
-
-Acrescentar as informações necessárias para configuração de desenvolvimento do projeto (modificação do projeto).
-
-
 ## 🗃 Histórico de lançamentos
 
-* 0.5.0 - XX/XX/2023
-    * Quinta entrega
-* 0.4.0 - XX/XX/2023
-    * Quarta entrega
+* 0.5.0 - 23/06/2023
+    * Quinta entrega: Construção do dashboard e integração com o modelo com serviço local
+* 0.4.0 - 07/06/2023
+    * Quarta entrega: Escolha do melhor modelo e aplicação de hiperparâmetros
 * 0.3.0 - 26/05/2023
     * Terceira entrega: Refinamento da última entrega, Modelo Word2Vec e aplicação em algoritmo Naive Bayes.
 * 0.2.0 - 12/05/2023
@@ -78,6 +74,6 @@ is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=choos
 
 ## 🎓 Referências
 
-1. 
-2. 
-3. 
+1. BoW: https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction
+2. Naive Bayes: https://scikit-learn.org/stable/modules/naive_bayes.html 
+3. http://www.swge.inf.br/ANAIS/CBCM2017/PDF/CBCM2017-0039.PDF 
