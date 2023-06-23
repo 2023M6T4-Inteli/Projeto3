@@ -85,17 +85,25 @@ def main():
 
         # Classifica as linhas
         df2 = classify_rows(model, df)
+        df_csv = df2.to_csv(index=False)
 
         # separa a interface em duas colunas
         columns = st.columns((2,1))
 
         with columns[0]:
             st.subheader(".CSV classificado:")
-            st.dataframe(df2.iloc[:11,0:2], use_container_width=True)    
+            st.dataframe(df2.iloc[:11,0:2], use_container_width=True)
+            st.download_button(
+                label="Download data as CSV",
+                data=df_csv,
+                file_name='comentarios_classificados.csv',
+                mime='text/csv',
+                use_container_width=True
+            )    
 
         with columns[1]:
             st.subheader("Palavras mais frequentes:")
-            st.dataframe(bow_dataframe(df2['texto_tratado']).head(10), use_container_width=True)
+            st.dataframe(bow_dataframe(df2['texto_tratado']).head(30), use_container_width=True)
             
         with st.container():
             st.write('---')
