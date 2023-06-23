@@ -22,7 +22,7 @@ def load_model(model_path):
 # Classifica as linhas do CSV
 def classify_rows(model, df):
     df2 = df
-    df2.insert(loc=1, column='classificacao', value=model.predict(df2.iloc[:,1:50]))
+    df2.insert(loc=1, column='classificacao', value=model.predict(df2.iloc[:,2:-1]))
     return df2
 
 
@@ -37,7 +37,7 @@ def sentiment_chart3(df2):
     plt.rcParams['axes.facecolor'] = '#11111E'  # Definir a cor de fundo como #11111E
 
     count_sentiment = df2['classificacao'].value_counts()
-    count_sentiment.plot(kind='barh', color=['#FF0000', '#0000FF', '#00FF00'])
+    count_sentiment.plot(kind='barh', color=['#0000FF','#00FF00','#FF0000'])
     plt.xlabel('Quantidade', color='#FFFFFF')
     plt.ylabel('Sentimento', color='#FFFFFF')
     plt.title('Distribuição dos sentimentos', color='#FFFFFF')
@@ -77,7 +77,7 @@ def main():
         st.write("---")
 
         # Carrega o modelo
-        model_path = "naivebayes_word2vec_cbow_sprint3.pkl"  # Caminho para o arquivo .pkl do modelo treinado
+        model_path = "modelo_rf_novo.pkl"  # Caminho para o arquivo .pkl do modelo treinado
         model = load_model(model_path)
         
 
@@ -95,11 +95,11 @@ def main():
 
         with columns[1]:
             st.subheader("Palavras mais frequentes:")
-            #st.dataframe(bow_dataframe(df2['Frase']).head(10), use_container_width=True)
+            st.dataframe(bow_dataframe(df2['texto_tratado']).head(10), use_container_width=True)
             
         with st.container():
             st.write('---')
-            #sentiment_chart3(df2)
+            sentiment_chart3(df2)
 
 # Executa o aplicativo
 if __name__ == '__main__':
