@@ -2,39 +2,16 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-import pandas as pd
+
 import numpy as np
+from keras.preprocessing.text import Tokenizer
+
 import matplotlib.pyplot as plt
+import plotly.express as px
+import seaborn as sns
+
 from wordcloud import WordCloud
 import re
-
-from sklearn.feature_extraction.text import CountVectorizer
-import ast
-from keras.preprocessing.text import Tokenizer
-from sklearn import preprocessing
-from sklearn.naive_bayes import GaussianNB
-from sklearn import metrics
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import ConfusionMatrixDisplay
-from sklearn.model_selection import train_test_split
-
-from keras.layers import Dense, Embedding, GlobalMaxPooling1D, Dropout
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from keras.callbacks import ModelCheckpoint
-from keras.utils import pad_sequences
-import tensorflow as tf
-from keras.metrics import Recall
-from sklearn.metrics import recall_score
-
-
-import nltk
-import spacy
-import gensim
-import pickle
-from scipy.spatial.distance import cosine
-from gensim.models import KeyedVectors
 
 # Carrega o modelo treinado
 def load_model(model_path):
@@ -42,25 +19,41 @@ def load_model(model_path):
         model = pickle.load(file)
     return model
 
-
-# def vectorize_text(text):
-#     #TFIDF
-
 # Classifica as linhas do CSV
 def classify_rows(model, df):
     df2 = df
     df2.insert(loc=1, column='classificacao', value=model.predict(df2.iloc[:,1:50]))
     return df2
 
-def sentiment_chart(df2):
-    # Contar os tipos de sentimento
+
+# Grafico de barras horizontal das classificações de sentimento
+def sentiment_chart3(df2):
+    df3 = df2
+    replace_dict = {2: 'Positivo', 1: 'Neutro', 0: 'Negativo'}
+    df3['classificacao'] = df3['classificacao'].replace(replace_dict)
+
+    plt.figure(figsize=(18, 6), facecolor='#11111E') ##11111E
+    plt.rcParams['text.color'] = '#FFFFFF'  # Definir a cor do texto como branco
+    plt.rcParams['axes.facecolor'] = '#11111E'  # Definir a cor de fundo como #11111E
+
     count_sentiment = df2['classificacao'].value_counts()
-    # Criar o gráfico de pizza
-    plt.figure(figsize=(2, 2), facecolor='#11111E')
-    count_sentiment.plot(kind='pie', autopct='%1.1f%%', textprops={'color': 'white'})
-    plt.ylabel('')
+    count_sentiment.plot(kind='barh', color=['#FF0000', '#0000FF', '#00FF00'])
+    plt.xlabel('Quantidade', color='#FFFFFF')
+    plt.ylabel('Sentimento', color='#FFFFFF')
+    plt.title('Distribuição dos sentimentos', color='#FFFFFF')
+    plt.tick_params(axis='x', colors='white')
+    plt.tick_params(axis='y', colors='white')
+
     st.pyplot(plt)
 
+def bow_dataframe(df2):
+    tokenizer = Tokenizer() # usando o tokenizer da biblioteca do keras
+    tokenizer.fit_on_texts(df2) # fitando o tokenizer com o que será passado como parâmetro
+    wordCount = tokenizer.word_counts # pegando a contagem de palavras do tokenizer
+    dfCountBoW = pd.DataFrame(list(wordCount.items())) # transformando em dataframe para melhor visualização
+    dfCountBoW.rename(columns={0: "Palavra", 1:"Frequência"}, inplace=True) # renomeando as colunas
+    final_df = dfCountBoW.sort_values(by=['Frequência'], ascending=False) # ordenando o dataframe
+    return final_df
 
 # Interface do Streamlit
 def main():
@@ -98,14 +91,15 @@ def main():
 
         with columns[0]:
             st.subheader(".CSV classificado:")
-            st.dataframe(df2.iloc[:6,0:2], use_container_width=True)    
+            st.dataframe(df2.iloc[:11,0:2], use_container_width=True)    
 
         with columns[1]:
             st.subheader("Palavras mais frequentes:")
-            st.write(df2.columns)
+            #st.dataframe(bow_dataframe(df2['Frase']).head(10), use_container_width=True)
             
         with st.container():
-            sentiment_chart(df2)
+            st.write('---')
+            #sentiment_chart3(df2)
 
 # Executa o aplicativo
 if __name__ == '__main__':
